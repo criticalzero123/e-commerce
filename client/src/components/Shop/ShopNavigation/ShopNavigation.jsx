@@ -35,7 +35,7 @@ const ShopNavigation = () => {
     <div>
       <Container className="mb-3 mt-4">
         <Row>
-          <Col>
+          <Col sm={4}>
             <Breadcrumb>
               <Breadcrumb.Item
                 linkAs={Link}
@@ -67,7 +67,7 @@ const ShopNavigation = () => {
             </Breadcrumb>
           </Col>
           {route.length < 4 && (
-            <Col>
+            <Col sm={8}>
               {/*if route.length === 1 current page is shop
                  if route.length === 2 current page is category shop except for the all
                  if route.length === 3 current page is sub category shop

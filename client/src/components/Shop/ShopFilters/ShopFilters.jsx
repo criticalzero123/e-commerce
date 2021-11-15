@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Stack, Form, Offcanvas } from "react-bootstrap";
+import { Form, Offcanvas } from "react-bootstrap";
 
 import { BsSliders } from "react-icons/bs";
 import {
@@ -85,35 +85,33 @@ const ShopFilters = ({ route }) => {
 
   return (
     <div>
-      <Stack direction="horizontal" gap={5}>
-        {route.length !== 3 ? (
-          <div
-            className="ms-auto"
-            onClick={handleShow}
-            style={{ cursor: "pointer" }}
-          >
-            {!show ? "Show " : "Hide "} Filters <BsSliders className="ms-1" />
+      <div>
+        <div className="float-end ms-4 ms-lg-5 d-inline-flex">
+          <div style={{ fontSize: "1rem" }} className="mt-2 me-1">
+            Sort:
           </div>
-        ) : (
-          <div className="ms-auto"></div>
-        )}
-        <div>
-          <Stack direction="horizontal" gap={2}>
-            <div>Sort By:</div>
 
-            <div>
-              <Form.Select
-                value={sort}
-                onChange={(e) => setSort(e.target.value)}
-              >
-                <option value="popular">Popularity</option>
-                <option value="highToLow">Price: High - Low</option>
-                <option value="lowToHigh">Price: Low - High</option>
-              </Form.Select>
-            </div>
-          </Stack>
+          <Form.Select value={sort} onChange={(e) => setSort(e.target.value)}>
+            <option value="popular">Popularity</option>
+            <option value="highToLow">Price: High - Low</option>
+            <option value="lowToHigh">Price: Low - High</option>
+          </Form.Select>
         </div>
-      </Stack>
+      </div>
+
+      {route.length !== 3 ? (
+        <div
+          className="float-end"
+          onClick={handleShow}
+          style={{ cursor: "pointer" }}
+        >
+          <p style={{ fontSize: "1rem" }} className="mt-2">
+            {!show ? "Show " : "Hide "} Filters <BsSliders className="ms-1" />
+          </p>
+        </div>
+      ) : (
+        <div className="ms-auto"></div>
+      )}
 
       {/* For the filter */}
       <Offcanvas show={show} onHide={handleClose} scroll={true} backdrop={true}>
