@@ -46,7 +46,7 @@ const ProductDetails = ({ match }) => {
     );
     swal({
       title: "Added to the Cart!",
-      text: "Thank you for shopping",
+      text: "Thank you for shopping.",
       icon: "success",
     });
   };
@@ -81,6 +81,7 @@ const ProductDetails = ({ match }) => {
                 style={{ width: "70%" }}
                 interval={null}
                 className="mx-auto"
+                activeIndex={colorIndex !== -1 ? colorIndex : 0}
               >
                 {product.imageUrl &&
                   product.imageUrl.map((image, index) => {

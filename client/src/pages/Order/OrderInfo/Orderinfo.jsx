@@ -138,7 +138,9 @@ const Orderinfo = ({ match }) => {
                     </Card.Text>
                     <Card.Text>
                       Total Amount
-                      <span className="float-end">{order.orderAmount}</span>
+                      <span className="float-end">
+                        {numberWithCommas(order.orderAmount)}
+                      </span>
                     </Card.Text>
                   </Card.Body>
                 </Card>
