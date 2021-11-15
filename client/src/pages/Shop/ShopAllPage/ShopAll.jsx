@@ -5,6 +5,7 @@ import ProductCard from "../../../components/ProductCard/ProductCard";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../../../actions/productActions";
+import Loading from "../../../components/Loading/Loading";
 
 const ShopAll = () => {
   const getAllProductsState = useSelector(
@@ -25,7 +26,16 @@ const ShopAll = () => {
         {products && <h3 className="mb-3">Items ({products.length})</h3>}
         <Row>
           {loading ? (
-            <h1>Loading...</h1>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100vh",
+              }}
+            >
+              <Loading />
+            </div>
           ) : error ? (
             <h1>Something went wrong</h1>
           ) : (

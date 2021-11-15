@@ -6,6 +6,7 @@ import ProductCard from "../../../components/ProductCard/ProductCard";
 import { Container, Row, Col } from "react-bootstrap";
 
 import { getAllSubCategoryProducts } from "../../../actions/productActions";
+import Loading from "../../../components/Loading/Loading";
 const Subcategory = ({ match }) => {
   const dispatch = useDispatch();
   const _getAllSubCategoryProducts = useSelector(
@@ -34,7 +35,16 @@ const Subcategory = ({ match }) => {
         )}
         <Row>
           {loading ? (
-            <h1>Loading...</h1>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100vh",
+              }}
+            >
+              <Loading />
+            </div>
           ) : error ? (
             <h1>Something went wrong</h1>
           ) : (

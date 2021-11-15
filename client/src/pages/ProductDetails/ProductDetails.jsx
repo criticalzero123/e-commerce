@@ -23,6 +23,7 @@ import { addToCart } from "../../actions/cartActions";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getProductById } from "../../actions/productActions";
+import Loading from "../../components/Loading/Loading";
 
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -85,7 +86,16 @@ const ProductDetails = ({ match }) => {
   return (
     <div>
       {loading ? (
-        <div>Loading...</div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        >
+          <Loading />
+        </div>
       ) : error ? (
         <div>Error....</div>
       ) : (

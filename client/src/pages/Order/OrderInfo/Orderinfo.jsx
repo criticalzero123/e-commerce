@@ -14,6 +14,7 @@ import {
   Table,
   Image,
 } from "react-bootstrap";
+import Loading from "../../../components/Loading/Loading";
 
 const Orderinfo = ({ match }) => {
   const dispatch = useDispatch();
@@ -33,7 +34,18 @@ const Orderinfo = ({ match }) => {
   return (
     <div>
       {error && <h1>Error...</h1>}
-      {loading && <h1>Loading...</h1>}
+      {loading && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        >
+          <Loading />
+        </div>
+      )}
       {order && (
         <div>
           <Container>

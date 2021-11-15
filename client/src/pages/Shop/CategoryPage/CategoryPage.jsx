@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import { getAllCategoryProducts } from "../../../actions/productActions";
 import ProductCard from "../../../components/ProductCard/ProductCard";
+import Loading from "../../../components/Loading/Loading";
 
 const CategoryPage = ({ match }) => {
   const getAllCategoryProduct = useSelector(
@@ -36,7 +37,16 @@ const CategoryPage = ({ match }) => {
           )}
           <Row>
             {loading ? (
-              <h1>Loading...</h1>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100vh",
+                }}
+              >
+                <Loading />
+              </div>
             ) : error ? (
               <h1>Something went wrong</h1>
             ) : (
