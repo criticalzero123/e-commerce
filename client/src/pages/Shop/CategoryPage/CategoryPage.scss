@@ -1,0 +1,36 @@
+.slick-prev::before {
+  color: red !important;
+  background-color: #eee !important;
+}
+.slick-next::before {
+  color: red !important;
+  background-color: #eee !important;
+}
+
+@mixin button-color {
+  color: (53, 50, 50) !important;
+  background-color: transparent !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black !important;
+  font-size: 2rem !important;
+}
+
+.slick-next {
+  @include button-color();
+  right: -10px !important;
+}
+.slick-prev {
+  @include button-color();
+  left: -23px !important;
+}
+/* the slides */
+.slick-slide {
+  margin: 0 10px;
+}
+/* the parent */
+.slick-list {
+  overflow: hidden !important;
+}

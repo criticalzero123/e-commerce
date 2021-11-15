@@ -1,0 +1,16 @@
+.breadcrumb-item a {
+  color: black !important;
+  text-decoration: none !important;
+}
+
+.breadcrumb-item a:hover {
+  color: orange !important;
+}
+
+.offcanvas-backdrop.show {
+  opacity: 0 !important;
+}
+
+.offcanvas {
+  width: 20rem !important;
+}

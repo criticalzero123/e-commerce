@@ -1,0 +1,9 @@
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+#sports:hover,
+#travels:hover,
+#shop1:hover {
+  text-decoration: underline !important;
+}
