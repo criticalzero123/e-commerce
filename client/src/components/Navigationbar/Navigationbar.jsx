@@ -68,7 +68,7 @@ function Navigationbar() {
     <div>
       <Navbar bg="light" expand="lg" className="fixed-top ">
         <Container>
-          <Col>
+          <Col sm={{ span: 0, offset: 0 }}>
             <Navbar.Brand as={Link} to="/">
               Mathilda.
             </Navbar.Brand>
@@ -76,9 +76,9 @@ function Navigationbar() {
 
           <Col
             lg={{ order: "last", span: 0, offset: 0 }}
-            xs={{ span: 3, offset: 3 }}
+            xs={{ span: 3, offset: 0 }}
             sm={{ span: 4, offset: 4 }}
-            md={{ span: 5, offset: 4 }}
+            md={{ span: 4, offset: 4 }}
           >
             <Nav
               className="ml-auto justify-content-end"
@@ -111,7 +111,7 @@ function Navigationbar() {
                   </div>
                 )}
               </NavDropdown>
-              <Nav.Item>
+              <Nav.Item className="ms-2">
                 <Nav.Link as={Link} to="/cart">
                   <div className="cart-icon">
                     <ShoppingIcon className="shopping-icon" />
@@ -122,7 +122,7 @@ function Navigationbar() {
             </Nav>
           </Col>
 
-          <Col>
+          <Col sm={{ span: 1, offset: 0 }}>
             <Navbar.Toggle
               aria-controls="basic-navbar-nav"
               className="float-end"
