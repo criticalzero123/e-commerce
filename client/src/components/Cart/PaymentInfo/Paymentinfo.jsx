@@ -33,21 +33,21 @@ const Paymentinfo = ({ cartItems }) => {
             <p className="mb-1" style={{ color: "gray" }}>
               Shipping & Handling:{" "}
               <span className="float-end">
-                {numberWithCommas(subtotal * 0.01)}
+                {numberWithCommas(Math.round(subtotal * 0.01))}
               </span>
             </p>
             {/* Before Tax */}
             <p className="mb-1" style={{ color: "gray" }}>
               Before tax:{" "}
               <span className="float-end">
-                {numberWithCommas(subtotal + subtotal * 0.01)}
+                {numberWithCommas(Math.round(subtotal + subtotal * 0.01))}
               </span>
             </p>
             {/* Tax Collected Tax = subtotal * 10% */}
             <p className="mb-1" style={{ color: "gray" }}>
               Tax collected:{" "}
               <span className="float-end">
-                {numberWithCommas(subtotal * 0.1)}
+                {numberWithCommas(Math.round(subtotal * 0.1))}
               </span>
             </p>
             <hr />
@@ -55,12 +55,16 @@ const Paymentinfo = ({ cartItems }) => {
             <p>
               Total Amount:{" "}
               <span className="float-end">
-                {numberWithCommas(subtotal + subtotal * 0.01 + subtotal * 0.1)}
+                {numberWithCommas(
+                  Math.round(subtotal + subtotal * 0.01 + subtotal * 0.1)
+                )}
               </span>
             </p>
           </div>
 
-          <Checkout amount={subtotal + subtotal * 0.01 + subtotal * 0.1} />
+          <Checkout
+            amount={Math.round(subtotal + subtotal * 0.01 + subtotal * 0.1)}
+          />
           <p
             className="text-center mt-3"
             style={{ color: "gray", fontSize: "0.8rem" }}
