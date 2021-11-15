@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Nav, NavDropdown, Container, Navbar, Row, Col } from "react-bootstrap";
+import { Nav, NavDropdown, Container, Navbar, Col } from "react-bootstrap";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -64,98 +64,96 @@ function Navigationbar() {
     <div>
       <Navbar bg="light" expand="lg" className="fixed-top ">
         <Container>
-          <Row>
-            <Col>
-              <Navbar.Brand as={Link} to="/">
-                Mathilda.
-              </Navbar.Brand>
-            </Col>
+          <Col>
+            <Navbar.Brand as={Link} to="/">
+              Mathilda.
+            </Navbar.Brand>
+          </Col>
 
-            <Col lg={{ order: "last" }}>
-              <Nav className="ml-auto ">
-                <Nav.Item>
-                  <Nav.Link as={Link} to="/cart">
-                    Cart({cartItems.length})
-                  </Nav.Link>
-                </Nav.Item>
-              </Nav>
-            </Col>
-
-            <Col>
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse
-                id="basic-navbar-nav"
-                className="justify-content-end"
+          <Col lg={{ order: "last" }}>
+            <Nav
+              className="ml-auto justify-content-end"
+              style={{ flexDirection: "row" }}
+            >
+              <NavDropdown
+                title={currentUser ? `User ` + currentUser.username : `User`}
+                id="basic-nav-dropdown"
               >
-                <Nav className="me-auto">
-                  <Nav.Link as={Link} to="/shop/all">
-                    Shop
-                  </Nav.Link>
-                  <NavDropdown
-                    title="Sports"
-                    id="sports"
-                    show={show}
-                    onMouseEnter={() => setShow(!show)}
-                    onMouseLeave={() => setShow(false)}
-                    onClick={sportsRoute}
-                  >
-                    <NavDropdown.Item>Running </NavDropdown.Item>
-                    <NavDropdown.Item>Basketball</NavDropdown.Item>
-                    <NavDropdown.Item>Tennis</NavDropdown.Item>
-                    <NavDropdown.Item>Skateboarding</NavDropdown.Item>
-                    <NavDropdown.Item>Snorkeling</NavDropdown.Item>
-                  </NavDropdown>
-                  <NavDropdown
-                    title="Travels"
-                    id="travels"
-                    show={show1}
-                    onMouseEnter={() => setShow1(!show1)}
-                    onMouseLeave={() => setShow1(false)}
-                    onClick={travelsRoute}
-                  >
-                    <NavDropdown.Item>Tent </NavDropdown.Item>
-                    <NavDropdown.Item>Gloves</NavDropdown.Item>
-                    <NavDropdown.Item>Jacket</NavDropdown.Item>
-                    <NavDropdown.Item>Bag</NavDropdown.Item>
-                    <NavDropdown.Item>Boots</NavDropdown.Item>
-                  </NavDropdown>
+                {!currentUser && (
+                  <div>
+                    <NavDropdown.Item as={Link} to="/login">
+                      Login
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/register">
+                      Register
+                    </NavDropdown.Item>
+                  </div>
+                )}
 
-                  <NavDropdown
-                    title={
-                      currentUser ? `User ` + currentUser.username : `User`
-                    }
-                    id="basic-nav-dropdown"
-                  >
-                    {!currentUser && (
-                      <div>
-                        <NavDropdown.Item as={Link} to="/login">
-                          Login
-                        </NavDropdown.Item>
-                        <NavDropdown.Item as={Link} to="/register">
-                          Register
-                        </NavDropdown.Item>
-                      </div>
-                    )}
+                {currentUser && (
+                  <div>
+                    <NavDropdown.Item as={Link} to="/orders">
+                      Orders
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                      onClick={() => {
+                        dispatch(logoutUser());
+                      }}
+                    >
+                      Logout
+                    </NavDropdown.Item>
+                  </div>
+                )}
+              </NavDropdown>
+              <Nav.Item>
+                <Nav.Link as={Link} to="/cart">
+                  Cart({cartItems.length})
+                </Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </Col>
 
-                    {currentUser && (
-                      <div>
-                        <NavDropdown.Item as={Link} to="/orders">
-                          Orders
-                        </NavDropdown.Item>
-                        <NavDropdown.Item
-                          onClick={() => {
-                            dispatch(logoutUser());
-                          }}
-                        >
-                          Logout
-                        </NavDropdown.Item>
-                      </div>
-                    )}
-                  </NavDropdown>
-                </Nav>
-              </Navbar.Collapse>
-            </Col>
-          </Row>
+          <Col>
+            <Navbar.Toggle
+              aria-controls="basic-navbar-nav"
+              className="float-end"
+            />
+            <Navbar.Collapse id="basic-navbar-nav" className="mx-auto">
+              <Nav className="me-auto mx-auto">
+                <Nav.Link as={Link} to="/shop/all">
+                  Shop
+                </Nav.Link>
+                <NavDropdown
+                  title="Sports"
+                  id="sports"
+                  show={show}
+                  onMouseEnter={() => setShow(!show)}
+                  onMouseLeave={() => setShow(false)}
+                  onClick={sportsRoute}
+                >
+                  <NavDropdown.Item>Running </NavDropdown.Item>
+                  <NavDropdown.Item>Basketball</NavDropdown.Item>
+                  <NavDropdown.Item>Tennis</NavDropdown.Item>
+                  <NavDropdown.Item>Skateboarding</NavDropdown.Item>
+                  <NavDropdown.Item>Snorkeling</NavDropdown.Item>
+                </NavDropdown>
+                <NavDropdown
+                  title="Travels"
+                  id="travels"
+                  show={show1}
+                  onMouseEnter={() => setShow1(!show1)}
+                  onMouseLeave={() => setShow1(false)}
+                  onClick={travelsRoute}
+                >
+                  <NavDropdown.Item>Tent </NavDropdown.Item>
+                  <NavDropdown.Item>Gloves</NavDropdown.Item>
+                  <NavDropdown.Item>Jacket</NavDropdown.Item>
+                  <NavDropdown.Item>Bag</NavDropdown.Item>
+                  <NavDropdown.Item>Boots</NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+            </Navbar.Collapse>
+          </Col>
         </Container>
       </Navbar>
     </div>
