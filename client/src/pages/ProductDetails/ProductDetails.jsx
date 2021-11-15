@@ -37,18 +37,34 @@ const ProductDetails = ({ match }) => {
   const { loading, product, error } = getProduct;
 
   const addToCartItem = () => {
-    const image = product.imageUrl[colorIndex];
-    const stockOfItem = product.countInStock[colorIndex].stock;
-    const colorOfItem = product.countInStock[colorIndex].color;
+    if (colorIndex !== -1) {
+      if (size !== "") {
+        const image = product.imageUrl[colorIndex];
+        const stockOfItem = product.countInStock[colorIndex].stock;
+        const colorOfItem = product.countInStock[colorIndex].color;
 
-    dispatch(
-      addToCart(product, quantity, size, stockOfItem, colorOfItem, image)
-    );
-    swal({
-      title: "Added to the Cart!",
-      text: "Thank you for shopping.",
-      icon: "success",
-    });
+        dispatch(
+          addToCart(product, quantity, size, stockOfItem, colorOfItem, image)
+        );
+        swal({
+          title: "Added to the Cart!",
+          text: "Thank you for shopping.",
+          icon: "success",
+        });
+      } else {
+        swal({
+          title: "Please Choose Size",
+          text: "",
+          icon: "warning",
+        });
+      }
+    } else {
+      swal({
+        title: "Please Choose Variant",
+        text: "",
+        icon: "warning",
+      });
+    }
   };
 
   var sizeAvailablity = [];

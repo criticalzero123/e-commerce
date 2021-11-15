@@ -27,7 +27,17 @@ const Checkout = ({ amount }) => {
     }
 
     if (!cartItems.length > 0) {
-      alert("No item found in your cart");
+      swal({
+        title: "No Item Found!",
+        text: "Your cart is empty, You want to go to shop?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          window.location.href = "/shop/all";
+        }
+      });
     }
   };
 
