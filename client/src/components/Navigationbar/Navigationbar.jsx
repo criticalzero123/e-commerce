@@ -76,7 +76,7 @@ function Navigationbar() {
 
           <Col
             lg={{ order: "last", span: 0, offset: 0 }}
-            xs={{ span: 2, offset: 2 }}
+            xs={{ span: 3, offset: 3 }}
             sm={{ span: 4, offset: 4 }}
             md={{ span: 5, offset: 4 }}
           >
