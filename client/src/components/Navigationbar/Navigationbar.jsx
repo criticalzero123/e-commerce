@@ -6,8 +6,12 @@ import { useSelector, useDispatch } from "react-redux";
 
 import "./Navigationbar.scss";
 
+import { FaUser } from "react-icons/fa";
+
 import { Link } from "react-router-dom";
 import { logoutUser } from "../../actions/userAction";
+
+import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
 
 function Navigationbar() {
   const _cartReducer = useSelector((state) => state.cartReducer);
@@ -70,15 +74,17 @@ function Navigationbar() {
             </Navbar.Brand>
           </Col>
 
-          <Col lg={{ order: "last" }}>
+          <Col
+            lg={{ order: "last", span: 0, offset: 0 }}
+            xs={{ span: 2, offset: 2 }}
+            sm={{ span: 4, offset: 4 }}
+            md={{ span: 5, offset: 4 }}
+          >
             <Nav
               className="ml-auto justify-content-end"
               style={{ flexDirection: "row" }}
             >
-              <NavDropdown
-                title={currentUser ? `User ` + currentUser.username : `User`}
-                id="basic-nav-dropdown"
-              >
+              <NavDropdown title={<FaUser size={20} />} id="basic-nav-dropdown">
                 {!currentUser && (
                   <div>
                     <NavDropdown.Item as={Link} to="/login">
@@ -107,7 +113,10 @@ function Navigationbar() {
               </NavDropdown>
               <Nav.Item>
                 <Nav.Link as={Link} to="/cart">
-                  Cart({cartItems.length})
+                  <div className="cart-icon">
+                    <ShoppingIcon className="shopping-icon" />
+                    <span className="item-count">{cartItems.length}</span>
+                  </div>
                 </Nav.Link>
               </Nav.Item>
             </Nav>
