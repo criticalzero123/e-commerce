@@ -1,4 +1,5 @@
 import axios from "axios";
+import swal from "sweetalert";
 
 export const getAllProducts = () => (dispatch) => {
   dispatch({ type: "GET_ALL_PRODUCTS_REQUEST" });
@@ -73,8 +74,13 @@ export const addProductReview = (review, productid) => (dispatch, getState) => {
     .post("/api/products/addreview", { review, productid, currentUser })
     .then((res) => {
       dispatch({ type: "ADD_PRODUCT_REVIEW_SUCCESS" });
-      window.location.reload();
-      alert("Your review submitted successfully");
+      swal({
+        title: "Review Added!",
+        text: "Your review is successfully added!",
+        icon: "success",
+      }).then((value) => {
+        window.location.reload();
+      });
     })
     .catch((err) => {
       dispatch({ type: "ADD_PRODUCT_REVIEW_FAILED" });

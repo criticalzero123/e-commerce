@@ -5,6 +5,8 @@ import ReactStars from "react-rating-stars-component";
 
 import { useDispatch } from "react-redux";
 
+import swal from "sweetalert";
+
 import { useHistory } from "react-router";
 
 import { Accordion, Form, Button, Modal } from "react-bootstrap";
@@ -55,7 +57,11 @@ const Review = ({ product }) => {
 
         if (alreadyreviewed) {
           reviewFalse();
-          alert("you have already reviewed this product");
+          swal(
+            "Attention!",
+            "You already added review to this product.",
+            "warning"
+          );
         }
       }
     }
