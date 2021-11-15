@@ -82,11 +82,11 @@ router.post("/placeorder", async (req, res) => {
       }
     }
 
-    order.save((err) => {
+    order.save((err, doc) => {
       if (err) {
         return res.status(400).json({ message: err });
       } else {
-        res.send("Order Placed Successfully");
+        res.send(doc);
       }
     });
   } else {

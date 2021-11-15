@@ -9,8 +9,11 @@ import {
   Image,
   OverlayTrigger,
   Tooltip,
+  Modal,
 } from "react-bootstrap";
 import ProductDetailsTabs from "../../components/ProductDetailsTabs/ProductDetailsTabs";
+
+import swal from "sweetalert";
 
 import "./ProductDetails.scss";
 
@@ -27,6 +30,7 @@ const ProductDetails = ({ match }) => {
   const [quantity, setQuantity] = useState(1);
   const [colorIndex, setColorIndex] = useState(-1);
   const [size, setSize] = useState("");
+  const [show, setShow] = useState(false);
 
   const getProduct = useSelector((state) => state.getProductByIdReducer);
 
@@ -40,6 +44,11 @@ const ProductDetails = ({ match }) => {
     dispatch(
       addToCart(product, quantity, size, stockOfItem, colorOfItem, image)
     );
+    swal({
+      title: "Added to the Cart!",
+      text: "Thank you for shopping",
+      icon: "success",
+    });
   };
 
   var sizeAvailablity = [];
@@ -217,6 +226,20 @@ const ProductDetails = ({ match }) => {
               </div>
             </Col>
           </Row>
+
+          <Modal show={show} onHide={() => setShow(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title>Cart Information</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Woohoo, you're reading this text in a modal!
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={() => setShow(false)}>
+                Okay
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </Container>
       )}
     </div>

@@ -8,7 +8,7 @@ export const placeOrder = (token, subTotal) => (dispatch, getState) => {
   axios
     .post("/api/orders/placeorder", { token, subTotal, currentUser, cartItems })
     .then((res) => {
-      dispatch({ type: "PLACE_ORDER_SUCCESS" });
+      dispatch({ type: "PLACE_ORDER_SUCCESS", payload: res.data });
       localStorage.removeItem("cartItems");
     })
     .catch((err) => {

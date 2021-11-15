@@ -3,6 +3,8 @@ import StripeCheckout from "react-stripe-checkout";
 
 import { Button } from "react-bootstrap";
 
+import swal from "sweetalert";
+
 import { useDispatch, useSelector } from "react-redux";
 import { placeOrder } from "../../actions/orderAction";
 import Loading from "../Loading/Loading";
@@ -12,7 +14,7 @@ const Checkout = ({ amount }) => {
   const orderstate = useSelector((state) => state.placeOrderReducer);
   const cartstate = useSelector((state) => state.cartReducer);
 
-  const { loading, success, error } = orderstate;
+  const { loading, success, error, order } = orderstate;
   const { cartItems } = cartstate;
 
   const tokenHandler = (token) => {
@@ -29,10 +31,33 @@ const Checkout = ({ amount }) => {
     }
   };
 
+  if (success) {
+    swal("Order Success", "Do You want to see your order info?", "success", {
+      buttons: {
+        cancel: "Cancel",
+        Go: {
+          text: "Okay",
+          value: "go",
+        },
+      },
+    }).then((value) => {
+      switch (value) {
+        case "go":
+          window.location.href = `/orders/${order._id}`;
+          break;
+
+        case "cancel":
+        default:
+          window.location.reload();
+          break;
+      }
+    });
+  }
+
   return (
     <div>
       {error && <h1>error...</h1>}
-      {success && <h1>Success</h1>}
+
       {!cartItems.length > 0 ? (
         <Button
           onClick={validate}
