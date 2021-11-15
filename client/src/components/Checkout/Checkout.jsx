@@ -1,13 +1,13 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
 
-import { Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
+import Loading from "../Loading/Loading";
 
 import swal from "sweetalert";
 
 import { useDispatch, useSelector } from "react-redux";
 import { placeOrder } from "../../actions/orderAction";
-import Loading from "../Loading/Loading";
 
 const Checkout = ({ amount }) => {
   const dispatch = useDispatch();
@@ -93,10 +93,18 @@ const Checkout = ({ amount }) => {
             variant="primary"
             className="mt-3 shadow"
           >
-            {loading && <Loading />}
             <h5 className="mt-1">Check Out</h5>
           </Button>
         </StripeCheckout>
+      )}
+
+      {loading && (
+        <Modal show={true}>
+          <Modal.Body className="text-center">
+            <Loading /> <br />
+            Please wait while we are confirming your payment.
+          </Modal.Body>
+        </Modal>
       )}
     </div>
   );
