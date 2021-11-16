@@ -66,9 +66,9 @@ function Navigationbar() {
 
   return (
     <div>
-      <Navbar bg="light" expand="lg" className="fixed-top ">
+      <Navbar bg="light" expand="lg" className="fixed-top">
         <Container>
-          <Col sm={{ span: 0, offset: 0 }}>
+          <Col>
             <Navbar.Brand as={Link} to="/">
               Mathilda.
             </Navbar.Brand>
@@ -122,7 +122,7 @@ function Navigationbar() {
             </Nav>
           </Col>
 
-          <Col sm={{ span: 1, offset: 0 }}>
+          <Col sm={{ span: 1, offset: 0 }} md={{ span: 0, offset: 0 }} lg>
             <Navbar.Toggle
               aria-controls="basic-navbar-nav"
               className="float-end"

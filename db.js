@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
-var mongoDBURL =
-  "mongodb+srv://e-commerce:e-commerce@cluster0.tx3hl.mongodb.net/int-prog";
+require("dotenv").config();
+
+var mongoDBURL = process.env.DB_KEY;
 
 mongoose.connect(mongoDBURL, {
   useUnifiedTopology: true,

@@ -1,9 +1,15 @@
 import React from "react";
 
+import Upperdisplay from "../../components/Home/UpperDisplay/Upperdisplay";
+
+import { Container } from "react-bootstrap";
+
 const Home = () => {
   return (
     <div>
-      <div>Homepage</div>
+      <Container>
+        <Upperdisplay />
+      </Container>
     </div>
   );
 };

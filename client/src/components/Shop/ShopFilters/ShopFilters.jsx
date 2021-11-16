@@ -156,7 +156,7 @@ const ShopFilters = ({ route }) => {
                       label={capitalizeFirstLetter(subcategory)}
                       name="group2"
                       type="checkbox"
-                      id={`inline-checkbox-${index}`}
+                      id={`inline-checkbox1-${index}`}
                       value={subcategory}
                       key={index}
                       checked={subCategory.includes(subcategory)}
@@ -172,7 +172,7 @@ const ShopFilters = ({ route }) => {
                       label={capitalizeFirstLetter(subcategory)}
                       name="group2"
                       type="checkbox"
-                      id={`inline-checkbox-${index}`}
+                      id={`inline-checkbox1-${index}`}
                       value={subcategory}
                       key={index}
                       checked={subCategory.includes(subcategory)}

@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap");
+
+.carousel-caption {
+  left: 5% !important;
+  text-align: left !important;
+  max-width: 300px !important;
+  right: auto !important;
+  margin-bottom: 5% !important;
+  padding: 5px !important;
+}
+
+.headers-text {
+  font-size: 2rem !important;
+  color: white !important;
+}
+
+.lowers-text {
+  font-size: 1.1rem !important;
+  color: white !important;
+}
+
+.motto {
+  font-weight: 600;
+  font-size: 1.4rem;
+  font-family: Quicksand !important;
+  line-height: 190%;
+  background-color: #fbfbfb;
+}
