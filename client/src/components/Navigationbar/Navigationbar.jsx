@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 
-import { Nav, NavDropdown, Container, Navbar, Col } from "react-bootstrap";
+import {
+  Nav,
+  NavDropdown,
+  Container,
+  Navbar,
+  Col,
+  Offcanvas,
+} from "react-bootstrap";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -125,7 +132,69 @@ function Navigationbar() {
             </Nav>
           </Col>
 
-          <Col sm={{ span: 1, offset: 0 }} md={{ span: 0, offset: 0 }} lg>
+          {/* For smaller device */}
+          <Col
+            className="d-lg-none"
+            sm={{ span: 1, offset: 0 }}
+            md={{ span: 0, offset: 0 }}
+            lg
+          >
+            <Navbar.Toggle aria-controls="offcanvasNavbar" />
+            <Navbar.Offcanvas
+              id="offcanvasNavbar"
+              aria-labelledby="offcanvasNavbarLabel"
+              placement="end"
+            >
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title id="offcanvasNavbarLabel">
+                  Mathilda
+                </Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Nav>
+                  <Nav.Link as={Link} to="/shop/all">
+                    Shop
+                  </Nav.Link>
+                  <NavDropdown title="Sports" id="sports">
+                    <NavDropdown.Item as={Link} to="/shop/sports/running">
+                      Running
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/shop/sports/basketball">
+                      Basketball
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/shop/sports/tennis">
+                      Tennis
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/shop/sports/skateboarding">
+                      Skateboarding
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/shop/sports/snorkeling">
+                      Snorkeling
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                  <NavDropdown title="Travels" id="travels">
+                    <NavDropdown.Item as={Link} to="/shop/travels/tent">
+                      Tent{" "}
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/shop/travels/gloves">
+                      Gloves
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/shop/travels/jacket">
+                      Jacket
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/shop/travels/bag">
+                      Bag
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/shop/travels/boots">
+                      Boots
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </Nav>
+              </Offcanvas.Body>
+            </Navbar.Offcanvas>
+          </Col>
+          {/* For Bigger device */}
+          <Col className="d-none d-lg-block">
             <Navbar.Toggle
               aria-controls="basic-navbar-nav"
               className="float-end"
