@@ -4,13 +4,18 @@ import { Row, Col, Card } from "react-bootstrap";
 
 import { SiNike, SiAdidas, SiThenorthface, SiNewbalance } from "react-icons/si";
 
+import "./Affiliatebrand.scss";
+
 const Affiliatebrand = () => {
   return (
     <div className="mt-5">
       <Row>
-        <Col sm={12} md={4}>
-          <h3>BRANDS AVAILABLE</h3>
-          <p>Thanks to this brands. </p>
+        <Col
+          sm={12}
+          md={4}
+          className="d-flex align-items-center justify-content-center"
+        >
+          <h3 className="brands-header">BRANDS AFFILIATE</h3>
         </Col>
         <Col sm={12} md={8}>
           <Row>

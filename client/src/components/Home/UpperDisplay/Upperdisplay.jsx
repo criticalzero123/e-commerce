@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Image, Carousel, Button } from "react-bootstrap";
+import { Image, Carousel } from "react-bootstrap";
 
 import indexpicture from "../../../assets/Indexpic.png";
 
@@ -20,8 +20,11 @@ const Upperdisplay = () => {
       </Carousel>
 
       <div className="text-center p-4 motto">
-        MATHILDA. <br />
-        <p style={{ fontSize: "1.2rem", fontWeight: "500" }}>
+        <span style={{ fontFamily: "Oswald", letterSpacing: "5px" }}>
+          MATHILDA.
+        </span>
+        <br />
+        <p className="lower-text-upper">
           WHERE ALL THE LEADING SPORTS AND TRAVELS BRANDS COME TO PLAY.
         </p>
       </div>

@@ -4,17 +4,19 @@ import { Row } from "react-bootstrap";
 
 import hotitem from "../../../assets/home/hotitem.mp4";
 
+import "./Popular.scss";
+
 const Popular = () => {
   return (
     <div className="mt-5">
-      Popular Item!
+      <h3 style={{ fontFamily: "Oswald" }}>Popular Item!</h3>
       <Row className=" align-items-center">
         <video loop autoPlay muted>
           <source src={hotitem} type="video/mp4" />
         </video>
         <div className="text-center mt-2">
-          <p>LEBRO WITNESS 5</p>
-          <p>BUY NOW!</p>
+          <p className="header-popular">LEBRON WITNESS 5</p>
+          <span className="btn-popular">BUY NOW!</span>
         </div>
       </Row>
     </div>

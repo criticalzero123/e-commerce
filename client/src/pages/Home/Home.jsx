@@ -20,10 +20,10 @@ const Home = () => {
 
   return (
     <div>
-      <Container>
+      <Container style={{ overflowX: "hidden" }}>
         <Upperdisplay />
 
-        <div data-aos="fade-right">
+        <div data-aos="zoom-in">
           <Featuresproducts />
         </div>
         <div data-aos="zoom-in">

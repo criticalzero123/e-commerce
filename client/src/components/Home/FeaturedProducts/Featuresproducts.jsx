@@ -7,8 +7,9 @@ import { Card } from "react-bootstrap";
 import adidas from "../../../assets/home/Adidas_pro.jpg";
 import KD from "../../../assets/home/KD_trey.jpg";
 import jacket from "../../../assets/home/jacket.jpg";
-import boots from "../../../assets/home/northface_hike.jpg";
 import gloves from "../../../assets/home/gloves.jpg";
+
+import { FaChevronRight } from "react-icons/fa";
 
 import "./Featuresproducts.scss";
 
@@ -32,12 +33,14 @@ const Featuresproducts = () => {
         settings: {
           slidesToShow: 2,
           initialSlide: 2,
+          arrows: false,
         },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
+          arrows: false,
         },
       },
     ],
@@ -52,8 +55,15 @@ const Featuresproducts = () => {
   return (
     <div className="mt-5">
       <p>
-        <span className="fw-bold">FEATURED PRODUCTS</span>
-        <span className="float-end">VIEW ALL</span>
+        <span
+          className="fw-bold"
+          style={{ fontFamily: "Oswald", fontSize: "1.2rem" }}
+        >
+          FEATURED PRODUCTS
+        </span>
+        <span className="float-end me-3 view-all">
+          VIEW ALL <FaChevronRight size={17} />
+        </span>
       </p>
 
       <Slider {...settings}>
@@ -103,18 +113,6 @@ const Featuresproducts = () => {
               ₱4999
             </Card.Text>
             {button("/shop/sports/basketball/61920fda7df53d583dc01172")}
-          </Card.Body>
-        </Card>
-
-        <Card className="border-0">
-          <Card.Img variant="top" src={boots} />
-          <Card.Body>
-            <Card.Title>Northface Hike II</Card.Title>
-            <Card.Text>
-              Travels - Boots <br />
-              ₱1599
-            </Card.Text>
-            {button("/shop/travels/boots/6191913915f516333f1fd219")}
           </Card.Body>
         </Card>
       </Slider>

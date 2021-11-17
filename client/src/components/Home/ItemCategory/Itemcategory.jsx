@@ -11,7 +11,7 @@ import "./Itemcategory.scss";
 const Itemcategory = () => {
   return (
     <div className="mt-5">
-      <Row>
+      <Row className="justify-content-center">
         <Col md={12} lg={6} style={{ padding: 0 }}>
           <Card className="border-0">
             <Card.Img variant="top" src={travel} />

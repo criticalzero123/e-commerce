@@ -27,3 +27,14 @@
   line-height: 190%;
   background-color: #fbfbfb;
 }
+
+.lower-text-upper {
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+}
+
+@media (max-width: 768px) {
+  .lower-text-upper {
+    font-size: 0.8rem !important;
+  }
+}

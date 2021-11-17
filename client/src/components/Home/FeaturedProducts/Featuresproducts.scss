@@ -32,4 +32,13 @@
 .slick-next,
 .slick-prev {
   @include button-color();
+  margin: 0 10px;
+}
+
+.view-all {
+  font-size: 1rem;
+  cursor: pointer;
+}
+.view-all:hover {
+  color: orange;
 }
