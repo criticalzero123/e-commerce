@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
+import back from "../../../assets/BACK.mp4";
+
 import {
   Container,
   Form,
@@ -40,13 +42,16 @@ const Signin = () => {
 
   return (
     <div>
-      <h1>Login</h1>
       <Container>
         {error && <h1>Invalid Credentials`</h1>}
         {loading && <h1>Loading</h1>}
         <Row>
-          <Col>
-            <Form onSubmit={login}>
+          <Col md={4}>
+            <h1 className="mt-5">
+              Hello, <br />
+            </h1>
+            <h1>Welcome Back</h1>
+            <Form onSubmit={login} className="mt-5">
               <FloatingLabel
                 controlId="floatingInputUsername"
                 label="Username / Mobile No / Email"
@@ -72,9 +77,30 @@ const Signin = () => {
                   required
                 />
               </FloatingLabel>
-
-              <Button type="submit">LOGIN</Button>
+              <p style={{ color: "gray" }}> Forget Password?</p>
+              <div className="d-grid gap-2">
+                <Button variant="outline-primary" type="submit" size="lg">
+                  LOGIN
+                </Button>
+              </div>
+              <p className="mt-5">
+                Don't have an Account?{" "}
+                <span
+                  className="fw-bold"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => (window.location.href = "/register")}
+                >
+                  Click Here!
+                </span>
+              </p>
             </Form>
+          </Col>
+          <Col md={8} className="d-flex align-items-center d-md-flex d-sm-none">
+            <Row className="mt-5">
+              <video autoPlay muted className="mt-5">
+                <source src={back} type="video/mp4" />
+              </video>
+            </Row>
           </Col>
         </Row>
       </Container>
