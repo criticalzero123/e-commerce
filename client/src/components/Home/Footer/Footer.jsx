@@ -45,7 +45,7 @@ const Footer = () => {
         </Col>
         <Col xs={4}>
           <h4 className="mb-4">ABOUT US</h4>
-          <p>BLOG</p>
+          <p>Blog</p>
           <p>Contact Number</p>
           <p>
             <BsFacebook size={25} className="me-2" />

@@ -15,7 +15,7 @@ import Footer from "../../components/Home/Footer/Footer";
 
 const Home = () => {
   useEffect(() => {
-    Aos.init({ duration: 1000 });
+    Aos.init({ duration: 1500 });
   }, []);
 
   return (
@@ -23,7 +23,7 @@ const Home = () => {
       <Container style={{ overflowX: "hidden" }}>
         <Upperdisplay />
 
-        <div data-aos="zoom-in">
+        <div data-aos="fade-right">
           <Featuresproducts />
         </div>
         <div data-aos="zoom-in">

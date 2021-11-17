@@ -61,7 +61,10 @@ const Featuresproducts = () => {
         >
           FEATURED PRODUCTS
         </span>
-        <span className="float-end me-3 view-all">
+        <span
+          className="float-end me-3 view-all"
+          onClick={() => (window.location.href = "/shop/all")}
+        >
           VIEW ALL <FaChevronRight size={17} />
         </span>
       </p>

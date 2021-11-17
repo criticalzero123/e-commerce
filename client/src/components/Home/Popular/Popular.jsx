@@ -9,7 +9,7 @@ import "./Popular.scss";
 const Popular = () => {
   return (
     <div className="mt-5">
-      <h3 style={{ fontFamily: "Oswald" }}>Popular Item!</h3>
+      <h3 style={{ fontFamily: "Oswald" }}>POPULAR ITEM!</h3>
       <Row className=" align-items-center">
         <video loop autoPlay muted>
           <source src={hotitem} type="video/mp4" />

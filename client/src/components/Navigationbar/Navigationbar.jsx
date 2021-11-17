@@ -11,6 +11,8 @@ import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { logoutUser } from "../../actions/userAction";
 
+import { ReactComponent as Logo } from "../../assets/logo.svg";
+
 import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
 
 function Navigationbar() {
@@ -70,7 +72,8 @@ function Navigationbar() {
         <Container>
           <Col>
             <Navbar.Brand as={Link} to="/">
-              Mathilda.
+              <Logo />
+              athilda.
             </Navbar.Brand>
           </Col>
 
