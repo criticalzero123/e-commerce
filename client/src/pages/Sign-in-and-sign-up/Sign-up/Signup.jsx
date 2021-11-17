@@ -113,15 +113,6 @@ const Signup = () => {
     }
   };
 
-  if (loading) {
-    <Modal show={true}>
-      <Modal.Body className="text-center">
-        <Loading /> <br />
-        Please wait while we are confirming your payment.
-      </Modal.Body>
-    </Modal>;
-  }
-
   // if the registration is success
   if (success) {
     swal(
@@ -168,6 +159,14 @@ const Signup = () => {
 
   return (
     <div>
+      {loading && (
+        <Modal show={true}>
+          <Modal.Body className="text-center">
+            <Loading /> <br />
+            Please Wait...
+          </Modal.Body>
+        </Modal>
+      )}
       {error && <Alert variant="danger">Account Already Registered</Alert>}
       <Container>
         <Row>

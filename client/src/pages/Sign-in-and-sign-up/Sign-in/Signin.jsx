@@ -4,13 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 
 import back from "../../../assets/BACK.mp4";
 
+import Loading from "../../../components/Loading/Loading";
+
 import {
   Container,
   Form,
   FloatingLabel,
   Col,
   Row,
+  Alert,
   Button,
+  Modal,
 } from "react-bootstrap";
 import { loginUser } from "../../../actions/userAction";
 
@@ -43,8 +47,15 @@ const Signin = () => {
   return (
     <div>
       <Container>
-        {error && <h1>Invalid Credentials`</h1>}
-        {loading && <h1>Loading</h1>}
+        {error && <Alert variant="danger">Invalid Credentials</Alert>}
+        {loading && (
+          <Modal show={true}>
+            <Modal.Body className="text-center">
+              <Loading /> <br />
+              Logging in...
+            </Modal.Body>
+          </Modal>
+        )}
         <Row>
           <Col md={4}>
             <h1 className="mt-5">
