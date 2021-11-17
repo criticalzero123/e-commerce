@@ -1,0 +1,35 @@
+.buy-now {
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: Oswald;
+}
+
+.buy-now:hover {
+  color: #edab77 !important;
+}
+
+/* the slides */
+.slick-slide {
+  padding: 0 20px !important;
+}
+
+/* the parent */
+.slick-list {
+  margin: 0 0px !important;
+}
+
+@mixin button-color {
+  color: rgb(53, 50, 50) !important;
+  background-color: transparent !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black !important;
+  font-size: 2rem !important;
+}
+
+.slick-next,
+.slick-prev {
+  @include button-color();
+}

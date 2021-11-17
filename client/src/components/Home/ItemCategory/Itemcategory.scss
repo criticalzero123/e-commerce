@@ -1,0 +1,29 @@
+@mixin btn-font-size {
+  font-size: 0.9rem !important;
+  font-family: Oswald !important;
+  letter-spacing: 2px !important;
+}
+
+.btn-travel {
+  border: 2px solid #2f2b3d !important;
+  color: #2f2b3d !important;
+  font-weight: 500 !important;
+  @include btn-font-size();
+}
+
+.btn-travel:hover {
+  color: #f9f5f4 !important;
+  background-color: #2f2b3d !important;
+}
+
+.btn-sport {
+  border: 2px solid #f9f5f4 !important;
+  color: #f9f5f4 !important;
+  font-weight: 500 !important;
+  @include btn-font-size();
+}
+
+.btn-sport:hover {
+  color: #2f2b3d !important;
+  background-color: #f9f5f4 !important;
+}
