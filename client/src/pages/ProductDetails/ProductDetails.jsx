@@ -33,6 +33,8 @@ const ProductDetails = ({ match }) => {
   const [size, setSize] = useState("");
   const [show, setShow] = useState(false);
 
+  const [carouselIndex, setCarouselIndex] = useState(0);
+
   const getProduct = useSelector((state) => state.getProductByIdReducer);
 
   const { loading, product, error } = getProduct;
@@ -79,6 +81,10 @@ const ProductDetails = ({ match }) => {
     }
   }
 
+  const handleSelect = (selectedIndex, e) => {
+    setCarouselIndex(selectedIndex);
+  };
+
   useEffect(() => {
     dispatch(getProductById(match.params.productid));
   }, [dispatch, match.params.productid]);
@@ -107,7 +113,8 @@ const ProductDetails = ({ match }) => {
                 style={{ width: "70%" }}
                 interval={null}
                 className="mx-auto"
-                activeIndex={colorIndex !== -1 ? colorIndex : 0}
+                activeIndex={carouselIndex}
+                onSelect={handleSelect}
               >
                 {product.imageUrl &&
                   product.imageUrl.map((image, index) => {
@@ -170,6 +177,7 @@ const ProductDetails = ({ match }) => {
                           key={item.color}
                           onClick={() => {
                             setColorIndex(i);
+                            setCarouselIndex(i);
                             setSize("");
                           }}
                           className={`me-3 btn-${item.color}`}

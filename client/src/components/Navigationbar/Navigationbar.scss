@@ -30,6 +30,10 @@
   position: absolute !important;
 }
 
+a {
+  color: black !important;
+}
+
 @media (min-width: 993px) {
   .dropdown-toggle::after {
     display: none !important;
