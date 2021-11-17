@@ -296,7 +296,11 @@ const Signup = () => {
                     (password !== "" && errorPassword) ||
                     confirmPassword !== password
                   }
-                  isValid={password !== "" && !errorPassword}
+                  isValid={
+                    password !== "" &&
+                    !errorPassword &&
+                    confirmPassword === password
+                  }
                   required
                 />
                 <InputGroup.Text
@@ -333,7 +337,11 @@ const Signup = () => {
                     (confirmPassword !== "" && errorConfirmPassword) ||
                     confirmPassword !== password
                   }
-                  isValid={confirmPassword !== "" && !errorConfirmPassword}
+                  isValid={
+                    confirmPassword !== "" &&
+                    !errorConfirmPassword &&
+                    confirmPassword === password
+                  }
                   required
                 />
                 <InputGroup.Text
