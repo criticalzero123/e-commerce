@@ -10,24 +10,41 @@ import { TiSocialYoutubeCircular } from "react-icons/ti";
 
 import { SiBitcoinsv } from "react-icons/si";
 
+import "./Footer.scss";
+
 const Footer = () => {
   return (
     <div className="mt-5">
-      <Row style={{ backgroundColor: "#F5F5F6" }}>
+      <Row style={{ backgroundColor: "#F5F5F6" }} className="pt-3">
         <Col xs={4}>
-          <h3 className="mb-4">Mathilda.</h3>
-          <p>SHOP</p>
-          <p>TRAVELS</p>
-          <p>SPORTS</p>
+          <h4 className="mb-4">Mathilda.</h4>
+          <p
+            className="navigation-footer"
+            onClick={() => (window.location.href = "/shop/all")}
+          >
+            SHOP
+          </p>
+          <p
+            className="navigation-footer"
+            onClick={() => (window.location.href = "/shop/travels")}
+          >
+            TRAVELS
+          </p>
+          <p
+            className="navigation-footer"
+            onClick={() => (window.location.href = "/shop/sports")}
+          >
+            SPORTS
+          </p>
         </Col>
         <Col xs={4}>
-          <h3 className="mb-4">PRIVACY & POLICY</h3>
+          <h4 className="mb-4">PRIVACY & POLICY</h4>
           <p>Terms and Conditions</p>
           <p>Refund Policy</p>
           <p>Shipment Policy</p>
         </Col>
         <Col xs={4}>
-          <h3 className="mb-4">ABOUT US</h3>
+          <h4 className="mb-4">ABOUT US</h4>
           <p>BLOG</p>
           <p>Contact Number</p>
           <p>

@@ -16,7 +16,12 @@ const Popular = () => {
         </video>
         <div className="text-center mt-2">
           <p className="header-popular">LEBRON WITNESS 5</p>
-          <span className="btn-popular">BUY NOW!</span>
+          <span
+            className="btn-popular"
+            onClick={() => (window.location.href = "/shop/sports/basketball")}
+          >
+            BUY NOW!
+          </span>
         </div>
       </Row>
     </div>
