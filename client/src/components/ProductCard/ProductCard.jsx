@@ -26,10 +26,7 @@ const ProductCard = ({ product }) => {
         <Card.Img
           variant="top"
           src={product.imageUrl[0]}
-          onMouseEnter={(e) =>
-            (e.target.src =
-              "https://lh3.googleusercontent.com/EQWm91gEU7x4nRGudJTZKiRxyYnlErjbNZQKEAfn7BM55CiEOKtu0ecguQEWDUE-S_-OrgTywlAAXsZCcYTLn5UqU6jDSEx_6jWBZ6A2n0Jc7moGsOj5XFQvhpPmJVeGxalAfaGDGg=w2400")
-          }
+          onMouseEnter={(e) => (e.target.src = product.pictureModel)}
           onMouseLeave={(e) => (e.target.src = product.imageUrl[0])}
         />
         <Card.Body>
