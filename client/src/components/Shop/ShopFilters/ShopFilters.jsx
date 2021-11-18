@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Form, Offcanvas } from "react-bootstrap";
+import { Form, Offcanvas, Row, Col } from "react-bootstrap";
 
 import { BsSliders } from "react-icons/bs";
 import {
@@ -147,54 +147,62 @@ const ShopFilters = ({ route }) => {
 
           <Form>
             <p>Sub Categories:</p>
-            {((categoryPage === "all") & (category.length === 0)) |
-            (category.length === 2)
-              ? filterSubAll.map((subcategory, index) => {
-                  return (
-                    <Form.Check
-                      inline
-                      label={capitalizeFirstLetter(subcategory)}
-                      name="group2"
-                      type="checkbox"
-                      id={`inline-checkbox1-${index}`}
-                      value={subcategory}
-                      key={index}
-                      checked={subCategory.includes(subcategory)}
-                      onChange={filterSubCategoryValidation}
-                    />
-                  );
-                })
-              : (categoryPage === "sports") | category.includes("sports")
-              ? filterSubSports.map((subcategory, index) => {
-                  return (
-                    <Form.Check
-                      inline
-                      label={capitalizeFirstLetter(subcategory)}
-                      name="group2"
-                      type="checkbox"
-                      id={`inline-checkbox1-${index}`}
-                      value={subcategory}
-                      key={index}
-                      checked={subCategory.includes(subcategory)}
-                      onChange={filterSubCategoryValidation}
-                    />
-                  );
-                })
-              : filterSubTravels.map((subcategory, index) => {
-                  return (
-                    <Form.Check
-                      inline
-                      label={capitalizeFirstLetter(subcategory)}
-                      name="group2"
-                      type="checkbox"
-                      id={`inline-checkbox-${index}`}
-                      value={subcategory}
-                      key={index}
-                      checked={subCategory.includes(subcategory)}
-                      onChange={filterSubCategoryValidation}
-                    />
-                  );
-                })}
+            <Row>
+              {((categoryPage === "all") & (category.length === 0)) |
+              (category.length === 2)
+                ? filterSubAll.map((subcategory, index) => {
+                    return (
+                      <Col xs={6}>
+                        <Form.Check
+                          inline
+                          label={capitalizeFirstLetter(subcategory)}
+                          name="group2"
+                          type="checkbox"
+                          id={`inline-checkbox1-${index}`}
+                          value={subcategory}
+                          key={index}
+                          checked={subCategory.includes(subcategory)}
+                          onChange={filterSubCategoryValidation}
+                        />
+                      </Col>
+                    );
+                  })
+                : (categoryPage === "sports") | category.includes("sports")
+                ? filterSubSports.map((subcategory, index) => {
+                    return (
+                      <Col xs={6}>
+                        <Form.Check
+                          inline
+                          label={capitalizeFirstLetter(subcategory)}
+                          name="group2"
+                          type="checkbox"
+                          id={`inline-checkbox1-${index}`}
+                          value={subcategory}
+                          key={index}
+                          checked={subCategory.includes(subcategory)}
+                          onChange={filterSubCategoryValidation}
+                        />
+                      </Col>
+                    );
+                  })
+                : filterSubTravels.map((subcategory, index) => {
+                    return (
+                      <Col xs={6}>
+                        <Form.Check
+                          inline
+                          label={capitalizeFirstLetter(subcategory)}
+                          name="group2"
+                          type="checkbox"
+                          id={`inline-checkbox-${index}`}
+                          value={subcategory}
+                          key={index}
+                          checked={subCategory.includes(subcategory)}
+                          onChange={filterSubCategoryValidation}
+                        />
+                      </Col>
+                    );
+                  })}
+            </Row>
           </Form>
         </Offcanvas.Body>
       </Offcanvas>
