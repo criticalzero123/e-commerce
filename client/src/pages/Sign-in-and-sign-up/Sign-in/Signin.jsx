@@ -88,7 +88,6 @@ const Signin = () => {
                   required
                 />
               </FloatingLabel>
-              <p style={{ color: "gray" }}> Forget Password?</p>
               <div className="d-grid gap-2">
                 <Button variant="outline-primary" type="submit" size="lg">
                   LOGIN
