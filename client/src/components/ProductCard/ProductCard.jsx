@@ -15,13 +15,20 @@ const ProductCard = ({ product }) => {
     return "₱" + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
+  console.log(product);
+
   return (
     <Link
       to={`/shop/${product.category}/${product.subCategory}/${product._id}`}
       style={{ textDecoration: "none" }}
     >
       <Card>
-        <Card.Img variant="top" src={product.imageUrl[0]} />
+        <Card.Img
+          variant="top"
+          src={product.imageUrl[0]}
+          onMouseEnter={(e) => (e.target.src = product.pictureModel)}
+          onMouseLeave={(e) => (e.target.src = product.imageUrl[0])}
+        />
         <Card.Body>
           <Card.Text className="lower-text">
             <span className="upper-text"> {product.name}</span>

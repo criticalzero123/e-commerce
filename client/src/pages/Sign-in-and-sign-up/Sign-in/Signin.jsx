@@ -106,7 +106,7 @@ const Signin = () => {
               </p>
             </Form>
           </Col>
-          <Col md={8} className="d-flex align-items-center d-md-flex d-sm-none">
+          <Col md={8} className="align-items-center d-lg-flex d-none">
             <Row className="mt-5">
               <video autoPlay muted className="mt-5">
                 <source src={back} type="video/mp4" />

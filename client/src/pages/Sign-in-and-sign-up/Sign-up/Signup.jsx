@@ -380,7 +380,7 @@ const Signup = () => {
               <Button type="submit">Register</Button>
             </Form>
           </Col>
-          <Col md={6} className="d-flex align-items-center d-md-flex d-sm-none">
+          <Col md={6} className="align-items-center d-md-flex d-none">
             <Card className="border-0 ">
               <Card.Img variant="top" src={picture} />
             </Card>

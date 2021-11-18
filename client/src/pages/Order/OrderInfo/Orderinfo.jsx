@@ -121,7 +121,7 @@ const Orderinfo = ({ match }) => {
                 <Card style={{ borderRadius: "8px" }} className="mt-5 p-3 pt-1">
                   <Card.Body>
                     <Card.Title className="mt-2">
-                      Order Details{" "}
+                      Order Details:
                       <span className="float-end">
                         <Button
                           variant="light"
@@ -138,21 +138,12 @@ const Orderinfo = ({ match }) => {
                       </span>
                     </Card.Title>
                     <br />
+                    <Card.Text>Transaction ID: {order.transactionId}</Card.Text>
                     <Card.Text>
-                      Transaction ID
-                      <span className="float-end">{order.transactionId}</span>
+                      Date of Order: {order.createdAt.substring(0, 10)}
                     </Card.Text>
                     <Card.Text>
-                      Date of Order
-                      <span className="float-end">
-                        {order.createdAt.substring(0, 10)}
-                      </span>
-                    </Card.Text>
-                    <Card.Text>
-                      Total Amount
-                      <span className="float-end">
-                        {numberWithCommas(order.orderAmount)}
-                      </span>
+                      Total Amount: {numberWithCommas(order.orderAmount)}
                     </Card.Text>
                   </Card.Body>
                 </Card>
@@ -162,28 +153,14 @@ const Orderinfo = ({ match }) => {
                     <Card.Title className="mt-2">Shipping details</Card.Title>
                     <br />
                     <Card.Text>
-                      Address Line
-                      <span className="float-end">
-                        {order.shippingAddress.address}
-                      </span>
+                      Address Line: {order.shippingAddress.address}
+                    </Card.Text>
+                    <Card.Text>City: {order.shippingAddress.city}</Card.Text>
+                    <Card.Text>
+                      Zip code: {order.shippingAddress.postalCode}
                     </Card.Text>
                     <Card.Text>
-                      City
-                      <span className="float-end">
-                        {order.shippingAddress.city}
-                      </span>
-                    </Card.Text>
-                    <Card.Text>
-                      Zip code
-                      <span className="float-end">
-                        {order.shippingAddress.postalCode}
-                      </span>
-                    </Card.Text>
-                    <Card.Text>
-                      Country
-                      <span className="float-end">
-                        {order.shippingAddress.country}
-                      </span>
+                      Country: {order.shippingAddress.country}
                     </Card.Text>
                   </Card.Body>
                 </Card>
