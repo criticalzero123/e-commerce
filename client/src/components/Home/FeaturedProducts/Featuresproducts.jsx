@@ -78,7 +78,7 @@ const Featuresproducts = () => {
               Sports - Basketball <br />
               ₱4999
             </Card.Text>
-            {button("/shop/sports/basketball/61808ea66d3b8c95d49d826b")}
+            {button("/shop/sports/basketball/61920d297df53d583dc01171")}
           </Card.Body>
         </Card>
 

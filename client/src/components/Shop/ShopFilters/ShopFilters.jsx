@@ -154,9 +154,9 @@ const ShopFilters = ({ route }) => {
           <Offcanvas.Title>Filters</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Accordion>
+          <Accordion flush>
             {categoryPage === "all" && (
-              <Accordion.Item eventKey="0">
+              <Accordion.Item>
                 <Accordion.Header>Categories</Accordion.Header>
                 <Accordion.Body>
                   <Form className="mb-4">
@@ -170,6 +170,7 @@ const ShopFilters = ({ route }) => {
                       checked={category.includes("travels")}
                       onChange={filterCategoryValidation}
                     />
+                    <br />
                     <Form.Check
                       inline
                       label="Sports"
@@ -184,7 +185,9 @@ const ShopFilters = ({ route }) => {
                 </Accordion.Body>
               </Accordion.Item>
             )}
-            <Accordion.Item eventKey="1">
+          </Accordion>
+          <Accordion flush>
+            <Accordion.Item>
               <Accordion.Header>Sub Categories</Accordion.Header>
               <Accordion.Body>
                 <Row>
@@ -192,7 +195,7 @@ const ShopFilters = ({ route }) => {
                   (category.length === 2)
                     ? filterSubAll.map((subcategory, index) => {
                         return (
-                          <Col xs={6}>
+                          <Col xs={12}>
                             <Form.Check
                               inline
                               label={capitalizeFirstLetter(subcategory)}
@@ -210,7 +213,7 @@ const ShopFilters = ({ route }) => {
                     : (categoryPage === "sports") | category.includes("sports")
                     ? filterSubSports.map((subcategory, index) => {
                         return (
-                          <Col xs={6}>
+                          <Col xs={12}>
                             <Form.Check
                               inline
                               label={capitalizeFirstLetter(subcategory)}
@@ -227,7 +230,7 @@ const ShopFilters = ({ route }) => {
                       })
                     : filterSubTravels.map((subcategory, index) => {
                         return (
-                          <Col xs={6}>
+                          <Col xs={12}>
                             <Form.Check
                               inline
                               label={capitalizeFirstLetter(subcategory)}
@@ -245,7 +248,9 @@ const ShopFilters = ({ route }) => {
                 </Row>
               </Accordion.Body>
             </Accordion.Item>
-            <Accordion.Item eventKey="2">
+          </Accordion>
+          <Accordion flush>
+            <Accordion.Item>
               <Accordion.Header>Colours</Accordion.Header>
               <Accordion.Body>
                 <Form>
