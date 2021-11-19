@@ -155,10 +155,10 @@ const ShopFilters = ({ route }) => {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Accordion>
-            <Accordion.Item eventKey="0">
-              <Accordion.Header>Categories</Accordion.Header>
-              <Accordion.Body>
-                {categoryPage === "all" && (
+            {categoryPage === "all" && (
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>Categories</Accordion.Header>
+                <Accordion.Body>
                   <Form className="mb-4">
                     <Form.Check
                       inline
@@ -181,9 +181,9 @@ const ShopFilters = ({ route }) => {
                       onChange={filterCategoryValidation}
                     />
                   </Form>
-                )}
-              </Accordion.Body>
-            </Accordion.Item>
+                </Accordion.Body>
+              </Accordion.Item>
+            )}
             <Accordion.Item eventKey="1">
               <Accordion.Header>Sub Categories</Accordion.Header>
               <Accordion.Body>
