@@ -2,6 +2,7 @@
 #travels:hover,
 #shop1:hover {
   text-decoration: underline !important;
+  color: orange !important;
 }
 
 .cart-icon {
@@ -32,6 +33,11 @@
 
 a {
   color: black !important;
+}
+
+a:hover {
+  color: orange !important;
+  text-decoration: underline !important;
 }
 
 .offcanvas-top {

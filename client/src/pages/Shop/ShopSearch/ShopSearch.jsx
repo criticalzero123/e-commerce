@@ -40,8 +40,7 @@ const ShopSearch = ({ match }) => {
             </div>
           ) : error ? (
             <h1>Something went wrong</h1>
-          ) : (
-            products &&
+          ) : products.length > 0 ? (
             products.map((product) => (
               <Col
                 key={product._id}
@@ -54,6 +53,12 @@ const ShopSearch = ({ match }) => {
                 <ProductCard product={product} />
               </Col>
             ))
+          ) : (
+            <div className="text-center">
+              <h6 style={{ fontSize: "3rem" }}>
+                We could not find anything for "{searchKey}"
+              </h6>
+            </div>
           )}
         </Row>
       </Container>

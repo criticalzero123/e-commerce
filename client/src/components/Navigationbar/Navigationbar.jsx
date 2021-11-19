@@ -9,6 +9,7 @@ import {
   Offcanvas,
   Form,
   InputGroup,
+  Accordion,
 } from "react-bootstrap";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -76,6 +77,8 @@ function Navigationbar() {
       }
     }
   };
+
+  var username = currentUser ? currentUser.username : "";
 
   return (
     <div>
@@ -200,81 +203,129 @@ function Navigationbar() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav>
-                  <Nav.Link as={Link} to="/shop/all">
+                  <Nav.Link as={Link} to="/shop/all" className="ms-4">
                     Shop
                   </Nav.Link>
-                  <NavDropdown title="Sports" id="sports">
-                    <NavDropdown.Item as={Link} to="/shop/sports/running">
-                      Running
-                    </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/shop/sports/basketball">
-                      Basketball
-                    </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/shop/sports/tennis">
-                      Tennis
-                    </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/shop/sports/skateboarding">
-                      Skateboarding
-                    </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/shop/sports/snorkeling">
-                      Snorkeling
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                  <NavDropdown title="Travels" id="travels">
-                    <NavDropdown.Item as={Link} to="/shop/travels/tent">
-                      Tent{" "}
-                    </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/shop/travels/gloves">
-                      Gloves
-                    </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/shop/travels/jacket">
-                      Jacket
-                    </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/shop/travels/bag">
-                      Bag
-                    </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/shop/travels/boots">
-                      Boots
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                  <NavDropdown
-                    title={
-                      currentUser ? (
-                        <span>
-                          <FaUser size={20} /> {currentUser.username}
-                        </span>
-                      ) : (
-                        <FaUser size={20} />
-                      )
-                    }
-                    id="basic-nav-dropdown"
-                  >
-                    {!currentUser && (
-                      <div>
-                        <NavDropdown.Item as={Link} to="/login">
-                          Login
-                        </NavDropdown.Item>
-                        <NavDropdown.Item as={Link} to="/register">
-                          Register
-                        </NavDropdown.Item>
-                      </div>
-                    )}
-
-                    {currentUser && (
-                      <div>
-                        <NavDropdown.Item as={Link} to="/orders">
-                          Orders
-                        </NavDropdown.Item>
-                        <NavDropdown.Item
-                          onClick={() => {
-                            dispatch(logoutUser());
-                          }}
+                  <Accordion flush>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header>Sports</Accordion.Header>
+                      <Accordion.Body>
+                        <Link
+                          to="/shop/sports/running"
+                          style={{ textDecoration: "none" }}
                         >
-                          Logout
-                        </NavDropdown.Item>
-                      </div>
-                    )}
-                  </NavDropdown>
+                          <p>Running</p>
+                        </Link>
+                        <hr />
+                        <Link
+                          to="/shop/sports/basketball"
+                          style={{ textDecoration: "none" }}
+                        >
+                          <p>Basketball</p>
+                        </Link>
+                        <hr />
+
+                        <Link
+                          to="/shop/sports/tennis"
+                          style={{ textDecoration: "none" }}
+                        >
+                          <p>Tennis</p>
+                        </Link>
+                        <hr />
+                        <Link
+                          to="/shop/sports/skateboarding"
+                          style={{ textDecoration: "none" }}
+                        >
+                          <p>Skateboarding</p>
+                        </Link>
+                        <hr />
+                        <Link
+                          to="/shop/sports/snorkeling"
+                          style={{ textDecoration: "none" }}
+                        >
+                          <p>Snorkeling</p>
+                        </Link>
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+
+                  <Accordion flush>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header>Travels</Accordion.Header>
+                      <Accordion.Body>
+                        <Link
+                          to="/shop/travels/tent"
+                          style={{ textDecoration: "none" }}
+                        >
+                          <p>Tent</p>
+                        </Link>
+                        <hr />
+                        <Link
+                          to="/shop/travels/gloves"
+                          style={{ textDecoration: "none" }}
+                        >
+                          <p>Gloves</p>
+                        </Link>
+                        <hr />
+
+                        <Link
+                          to="/shop/travels/jacket"
+                          style={{ textDecoration: "none" }}
+                        >
+                          <p>Jacket</p>
+                        </Link>
+                        <hr />
+                        <Link
+                          to="/shop/travels/bag"
+                          style={{ textDecoration: "none" }}
+                        >
+                          <p>Bag</p>
+                        </Link>
+                        <hr />
+                        <Link
+                          to="/shop/travels/boots"
+                          style={{ textDecoration: "none" }}
+                        >
+                          <p>Boots</p>
+                        </Link>
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+
+                  <Accordion flush>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header>
+                        <FaUser size={20} /> {username}
+                      </Accordion.Header>
+                      <Accordion.Body>
+                        {!currentUser && (
+                          <div>
+                            <NavDropdown.Item as={Link} to="/login">
+                              Login
+                            </NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/register">
+                              Register
+                            </NavDropdown.Item>
+                          </div>
+                        )}
+
+                        {currentUser && (
+                          <div>
+                            <NavDropdown.Item as={Link} to="/orders">
+                              Orders
+                            </NavDropdown.Item>
+                            <NavDropdown.Item
+                              onClick={() => {
+                                dispatch(logoutUser());
+                              }}
+                            >
+                              Logout
+                            </NavDropdown.Item>
+                          </div>
+                        )}
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
@@ -349,6 +400,7 @@ function Navigationbar() {
                   }
                 }}
               />
+
               <InputGroup.Text
                 onClick={() =>
                   (window.location.href = `/shop/all/search/${searchQuery}`)
@@ -360,22 +412,35 @@ function Navigationbar() {
             </InputGroup>
           </Col>
         </Offcanvas.Header>
-        <Offcanvas.Body className="text-center">
+        <Offcanvas.Body
+          className="text-center"
+          onClick={() => setShowSearch(false)}
+        >
           <p className="mb-4">Popular Search Terms</p>
 
-          <Link to="/shop/sports/basketball/61920fda7df53d583dc01172">
-            <h6>Adidas Pro N3XT</h6>
-          </Link>
+          <h6>
+            <Link to="/shop/sports/basketball/61920fda7df53d583dc01172">
+              Adidas Pro N3XT
+            </Link>
+          </h6>
 
-          <Link to="/shop/sports/basketball/61808ea66d3b8c95d49d826b">
-            <h6>Nike Precision IV shoes</h6>
-          </Link>
-          <Link to="/shop/sports/skateboarding/619246a381e768dab0c738b2">
-            <h6>Vans Old School</h6>
-          </Link>
-          <Link to="/shop/travels/tent/6192567281e768dab0c738c9">
-            <h6>Bessport Camping</h6>
-          </Link>
+          <h6>
+            <Link to="/shop/sports/basketball/61808ea66d3b8c95d49d826b">
+              Nike Precision IV shoes
+            </Link>
+          </h6>
+
+          <h6>
+            <Link to="/shop/sports/skateboarding/619246a381e768dab0c738b2">
+              Vans Old School
+            </Link>
+          </h6>
+
+          <h6>
+            <Link to="/shop/travels/tent/6192567281e768dab0c738c9">
+              Bessport Camping
+            </Link>
+          </h6>
         </Offcanvas.Body>
       </Offcanvas>
     </div>
