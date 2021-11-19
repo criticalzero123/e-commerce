@@ -119,8 +119,6 @@ const ShopFilters = ({ route }) => {
     colorName,
   ]);
 
-  console.log(colorName);
-
   return (
     <div>
       <div>
@@ -243,11 +241,10 @@ const ShopFilters = ({ route }) => {
             </Row>
             <Row>
               <p className="mt-4">Colours:</p>
-              {filterColor.map((color) => {
+              {filterColor.map((color, index) => {
                 return (
-                  <Col xs={3}>
+                  <Col xs={3} key={index}>
                     <Button
-                      key={color}
                       onClick={() => {
                         if (colorName.includes(color)) {
                           setColorName(
