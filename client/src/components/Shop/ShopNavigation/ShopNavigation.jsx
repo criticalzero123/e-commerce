@@ -53,13 +53,15 @@ const ShopNavigation = () => {
               ) : (
                 ""
               )}
-              {route.length > 2 && (
+              {(route.length > 2) & (route[2] !== "search") ? (
                 <Breadcrumb.Item
                   linkAs={Link}
                   linkProps={{ to: `/${route[0]}/${route[1]}/${route[2]}` }}
                 >
                   {firstCapital(route[2])}
                 </Breadcrumb.Item>
+              ) : (
+                ""
               )}
               {route.length > 3 && (
                 <Breadcrumb.Item active>{productName}</Breadcrumb.Item>

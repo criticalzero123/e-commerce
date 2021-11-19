@@ -23,22 +23,22 @@ const ShopFilters = ({ route }) => {
   const filterSubTravels = ["tent", "gloves", "jacket", "bag", "boots"];
 
   const filterColor = [
-    "white",
-    "pink",
-    "red",
-    "black",
-    "yellow",
-    "blue",
-    "green",
-    "purple",
-    "gray",
-    "skyblue",
-    "brown",
-    "silver",
-    "tealblue",
-    "violet",
-    "mint",
-    "phantsm",
+    "White",
+    "Pink",
+    "Red",
+    "Black",
+    "Yellow",
+    "Blue",
+    "Green",
+    "Purple",
+    "Gray",
+    "Skyblue",
+    "Brown",
+    "Silver",
+    "Tealblue",
+    "Violet",
+    "Mint",
+    "Phantsm",
   ];
 
   //All sub Filters
@@ -119,7 +119,7 @@ const ShopFilters = ({ route }) => {
   ]);
 
   return (
-    <div>
+    <div className="filter">
       <div>
         <div className="float-end ms-4 ms-lg-5 d-inline-flex">
           <div style={{ fontSize: "1rem" }} className="mt-2 me-1">
@@ -195,7 +195,7 @@ const ShopFilters = ({ route }) => {
                   (category.length === 2)
                     ? filterSubAll.map((subcategory, index) => {
                         return (
-                          <Col xs={12}>
+                          <Col xs={12} key={index}>
                             <Form.Check
                               inline
                               label={capitalizeFirstLetter(subcategory)}
@@ -203,7 +203,6 @@ const ShopFilters = ({ route }) => {
                               type="checkbox"
                               id={`inline-checkbox1-${index}`}
                               value={subcategory}
-                              key={index}
                               checked={subCategory.includes(subcategory)}
                               onChange={filterSubCategoryValidation}
                             />
@@ -213,7 +212,7 @@ const ShopFilters = ({ route }) => {
                     : (categoryPage === "sports") | category.includes("sports")
                     ? filterSubSports.map((subcategory, index) => {
                         return (
-                          <Col xs={12}>
+                          <Col xs={12} key={index}>
                             <Form.Check
                               inline
                               label={capitalizeFirstLetter(subcategory)}
@@ -221,7 +220,6 @@ const ShopFilters = ({ route }) => {
                               type="checkbox"
                               id={`inline-checkbox1-${index}`}
                               value={subcategory}
-                              key={index}
                               checked={subCategory.includes(subcategory)}
                               onChange={filterSubCategoryValidation}
                             />
@@ -230,7 +228,7 @@ const ShopFilters = ({ route }) => {
                       })
                     : filterSubTravels.map((subcategory, index) => {
                         return (
-                          <Col xs={12}>
+                          <Col xs={12} key={index}>
                             <Form.Check
                               inline
                               label={capitalizeFirstLetter(subcategory)}
@@ -238,7 +236,6 @@ const ShopFilters = ({ route }) => {
                               type="checkbox"
                               id={`inline-checkbox-${index}`}
                               value={subcategory}
-                              key={index}
                               checked={subCategory.includes(subcategory)}
                               onChange={filterSubCategoryValidation}
                             />
@@ -260,21 +257,26 @@ const ShopFilters = ({ route }) => {
                         <Col xs={4} key={index} className="text-center">
                           <Button
                             onClick={() => {
-                              if (colorName.includes(color)) {
+                              if (colorName.includes(color.toLowerCase())) {
                                 setColorName(
-                                  colorName.filter((colors) => colors !== color)
+                                  colorName.filter(
+                                    (colors) => colors !== color.toLowerCase()
+                                  )
                                 );
                               } else {
-                                setColorName([...colorName, color]);
+                                setColorName([
+                                  ...colorName,
+                                  color.toLowerCase(),
+                                ]);
                               }
                             }}
-                            className={`btn-${color}`}
+                            className={`btn-${color.toLowerCase()}`}
                             style={{
                               borderRadius: "20px",
                               padding: "6px 11px",
                             }}
                           >
-                            {colorName.includes(color) ? (
+                            {colorName.includes(color.toLowerCase()) ? (
                               <FaCheck
                                 size="1rem"
                                 style={{ visibility: "visible" }}

@@ -34,6 +34,10 @@ a {
   color: black !important;
 }
 
+.offcanvas-top {
+  width: 100% !important;
+}
+
 @media (min-width: 993px) {
   .dropdown-toggle::after {
     display: none !important;

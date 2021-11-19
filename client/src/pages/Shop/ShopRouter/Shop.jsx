@@ -7,6 +7,7 @@ import CategoryPage from "../CategoryPage/CategoryPage";
 import Subcategory from "../SubcategoryPage/Subcategory";
 import ProductDetails from "../../ProductDetails/ProductDetails";
 import ShopNavigation from "../../../components/Shop/ShopNavigation/ShopNavigation";
+import ShopSearch from "../ShopSearch/ShopSearch";
 
 const Shop = () => {
   return (
@@ -14,6 +15,7 @@ const Shop = () => {
       <ShopNavigation />
       <Switch>
         <Route path="/shop/all" component={ShopAll} exact />
+        <Route path="/shop/all/search/:search" component={ShopSearch} exact />
         <Route path="/shop/:category" component={CategoryPage} exact />
         <Route
           path="/shop/:category/:subcategory"

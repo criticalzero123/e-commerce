@@ -235,3 +235,28 @@ export const filterSubProducts =
         });
       });
   };
+
+export const searchProducts = (searchKey) => (dispatch) => {
+  dispatch({ type: "GET_ALL_PRODUCTS_REQUEST" });
+
+  var filteredProducts;
+  axios
+    .get("/api/products/getallproducts")
+    .then((res) => {
+      filteredProducts = res.data;
+
+      if (searchKey) {
+        filteredProducts = res.data.filter((product) =>
+          product.name.toLowerCase().includes(searchKey.toLowerCase())
+        );
+      }
+
+      dispatch({
+        type: "GET_ALL_PRODUCTS_SUCCESS",
+        payload: filteredProducts,
+      });
+    })
+    .catch((err) => {
+      dispatch({ type: "GET_ALL_PRODUCTS_FAILED", payload: err });
+    });
+};

@@ -7,13 +7,15 @@ import {
   Navbar,
   Col,
   Offcanvas,
+  Form,
+  InputGroup,
 } from "react-bootstrap";
 
 import { useSelector, useDispatch } from "react-redux";
 
 import "./Navigationbar.scss";
 
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaSearch } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 import { logoutUser } from "../../actions/userAction";
@@ -27,6 +29,8 @@ function Navigationbar() {
 
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const { cartItems } = _cartReducer;
 
@@ -94,7 +98,42 @@ function Navigationbar() {
               className="ml-auto justify-content-end"
               style={{ flexDirection: "row" }}
             >
-              <NavDropdown title={<FaUser size={20} />} id="basic-nav-dropdown">
+              <Nav.Item
+                className="mt-1 me-4 d-none d-lg-block"
+                onClick={() => setShowSearch(true)}
+              >
+                <InputGroup>
+                  <InputGroup.Text
+                    style={{
+                      borderRadius: "20px",
+                      position: "absolute",
+                      zIndex: "99",
+                      padding: "10px 12px ",
+                      opacity: "40%",
+                    }}
+                  >
+                    <FaSearch />
+                  </InputGroup.Text>
+                  <Form.Control
+                    type="text"
+                    placeholder="        Search"
+                    required
+                    style={{
+                      borderRadius: "20px",
+                      borderLeft: "-10px",
+                    }}
+                    onChange={(e) => {
+                      setShowSearch(true);
+                      setSearchQuery(e.target.value);
+                    }}
+                  />
+                </InputGroup>
+              </Nav.Item>
+              <NavDropdown
+                title={<FaUser size={20} />}
+                id="basic-nav-dropdown"
+                className="d-none d-lg-block"
+              >
                 {!currentUser && (
                   <div>
                     <NavDropdown.Item as={Link} to="/login">
@@ -121,7 +160,16 @@ function Navigationbar() {
                   </div>
                 )}
               </NavDropdown>
-              <Nav.Item className="ms-2">
+
+              <Nav.Item className="mt-2 d-block d-lg-none">
+                <FaSearch
+                  size={18}
+                  onClick={() => setShowSearch(true)}
+                  style={{ cursor: "pointer" }}
+                />
+              </Nav.Item>
+
+              <Nav.Item className="ms-1 ms-sm-2">
                 <Nav.Link as={Link} to="/cart">
                   <div className="cart-icon">
                     <ShoppingIcon className="shopping-icon" />
@@ -189,6 +237,44 @@ function Navigationbar() {
                       Boots
                     </NavDropdown.Item>
                   </NavDropdown>
+                  <NavDropdown
+                    title={
+                      currentUser ? (
+                        <span>
+                          <FaUser size={20} /> {currentUser.username}
+                        </span>
+                      ) : (
+                        <FaUser size={20} />
+                      )
+                    }
+                    id="basic-nav-dropdown"
+                  >
+                    {!currentUser && (
+                      <div>
+                        <NavDropdown.Item as={Link} to="/login">
+                          Login
+                        </NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="/register">
+                          Register
+                        </NavDropdown.Item>
+                      </div>
+                    )}
+
+                    {currentUser && (
+                      <div>
+                        <NavDropdown.Item as={Link} to="/orders">
+                          Orders
+                        </NavDropdown.Item>
+                        <NavDropdown.Item
+                          onClick={() => {
+                            dispatch(logoutUser());
+                          }}
+                        >
+                          Logout
+                        </NavDropdown.Item>
+                      </div>
+                    )}
+                  </NavDropdown>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
@@ -237,6 +323,61 @@ function Navigationbar() {
           </Col>
         </Container>
       </Navbar>
+      {/* For the search */}
+
+      <Offcanvas
+        show={showSearch}
+        onHide={() => setShowSearch(false)}
+        placement="top"
+        backdrop={true}
+        className="h-100"
+      >
+        <Offcanvas.Header closeButton>
+          <Col xs={{ span: 10, offset: 0 }} md={{ span: 6, offset: 3 }}>
+            <InputGroup style={{ width: "50%" }} className="mx-auto w-100">
+              <Form.Control
+                type="text"
+                placeholder="Search"
+                required
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    window.location.href = `/shop/all/search/${searchQuery}`;
+                  }
+                }}
+              />
+              <InputGroup.Text
+                onClick={() =>
+                  (window.location.href = `/shop/all/search/${searchQuery}`)
+                }
+                style={{ cursor: "pointer" }}
+              >
+                <FaSearch />
+              </InputGroup.Text>
+            </InputGroup>
+          </Col>
+        </Offcanvas.Header>
+        <Offcanvas.Body className="text-center">
+          <p className="mb-4">Popular Search Terms</p>
+
+          <Link to="/shop/sports/basketball/61920fda7df53d583dc01172">
+            <h6>Adidas Pro N3XT</h6>
+          </Link>
+
+          <Link to="/shop/sports/basketball/61808ea66d3b8c95d49d826b">
+            <h6>Nike Precision IV shoes</h6>
+          </Link>
+          <Link to="/shop/sports/skateboarding/619246a381e768dab0c738b2">
+            <h6>Vans Old School</h6>
+          </Link>
+          <Link to="/shop/travels/tent/6192567281e768dab0c738c9">
+            <h6>Bessport Camping</h6>
+          </Link>
+        </Offcanvas.Body>
+      </Offcanvas>
     </div>
   );
 }
