@@ -15,8 +15,6 @@ const ProductCard = ({ product }) => {
     return "₱" + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  console.log(product);
-
   return (
     <Link
       to={`/shop/${product.category}/${product.subCategory}/${product._id}`}

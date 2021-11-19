@@ -87,53 +87,63 @@ export const addProductReview = (review, productid) => (dispatch, getState) => {
     });
 };
 
-// PUT CATEGORY IN HERE IF YOU KNOW WHAT TO DO NOW
-export const filterProducts = (sort, category, subCategory) => (dispatch) => {
-  dispatch({ type: "GET_ALL_PRODUCTS_REQUEST" });
+export const filterProducts =
+  (sort, colors, category, subCategory) => (dispatch) => {
+    dispatch({ type: "GET_ALL_PRODUCTS_REQUEST" });
 
-  var filteredProducts;
-  axios
-    .get("/api/products/getallproducts")
-    .then((res) => {
-      filteredProducts = res.data;
+    var filteredProducts;
+    axios
+      .get("/api/products/getallproducts")
+      .then((res) => {
+        filteredProducts = res.data;
 
-      // For the category filter
-      if (category.length > 0) {
-        filteredProducts = res.data.filter((product) =>
-          category.includes(product.category.toLowerCase())
-        );
-      }
-
-      // For Subcategory filter
-      if (subCategory.length > 0) {
-        filteredProducts = filteredProducts.filter((product) =>
-          subCategory.includes(product.subCategory.toLowerCase())
-        );
-      }
-
-      // For the sort
-      if (sort !== "popular") {
-        if (sort === "highToLow") {
-          filteredProducts = filteredProducts.sort((a, b) => {
-            return b.price - a.price;
-          });
-        } else {
-          filteredProducts = filteredProducts.sort((a, b) => {
-            return a.price - b.price;
-          });
+        // For the category filter
+        if (category.length > 0) {
+          filteredProducts = res.data.filter((product) =>
+            category.includes(product.category.toLowerCase())
+          );
         }
-      }
 
-      dispatch({ type: "GET_ALL_PRODUCTS_SUCCESS", payload: filteredProducts });
-    })
-    .catch((err) => {
-      dispatch({ type: "GET_ALL_PRODUCTS_FAILED", payload: err });
-    });
-};
+        // For Subcategory filter
+        if (subCategory.length > 0) {
+          filteredProducts = filteredProducts.filter((product) =>
+            subCategory.includes(product.subCategory.toLowerCase())
+          );
+        }
+
+        // For the color
+        if (colors.length > 0) {
+          filteredProducts = filteredProducts.filter((product) =>
+            product.colors.some((item) => colors.includes(item))
+          );
+        }
+
+        // For the sort
+        if (sort !== "popular") {
+          if (sort === "highToLow") {
+            filteredProducts = filteredProducts.sort((a, b) => {
+              return b.price - a.price;
+            });
+          } else {
+            filteredProducts = filteredProducts.sort((a, b) => {
+              return a.price - b.price;
+            });
+          }
+        }
+
+        dispatch({
+          type: "GET_ALL_PRODUCTS_SUCCESS",
+          payload: filteredProducts,
+        });
+      })
+      .catch((err) => {
+        dispatch({ type: "GET_ALL_PRODUCTS_FAILED", payload: err });
+      });
+  };
 
 // if in category and want to filter sub products
 export const filterSubCategoryProducts =
-  (sort, category, subCategory) => (dispatch) => {
+  (sort, colors, category, subCategory) => (dispatch) => {
     dispatch({ type: "GET_ALL_CATEGORY_PRODUCTS_REQUEST" });
 
     var filteredSubProducts;
@@ -147,6 +157,13 @@ export const filterSubCategoryProducts =
         if (subCategory.length > 0) {
           filteredSubProducts = res.data.filter((product) =>
             subCategory.includes(product.subCategory.toLowerCase())
+          );
+        }
+
+        // For the color
+        if (colors.length > 0) {
+          filteredSubProducts = filteredSubProducts.filter((product) =>
+            product.colors.some((item) => colors.includes(item))
           );
         }
 
@@ -175,7 +192,7 @@ export const filterSubCategoryProducts =
 
 //when in sub category page
 export const filterSubProducts =
-  (sort, category, subCategory) => (dispatch) => {
+  (sort, colors, category, subCategory) => (dispatch) => {
     dispatch({ type: "GET_ALL_SUB_CATEGORY_PRODUCTS_REQUEST" });
     var filteredSubProducts;
 
@@ -187,6 +204,12 @@ export const filterSubProducts =
       .then((res) => {
         filteredSubProducts = res.data;
 
+        // For the color
+        if (colors.length > 0) {
+          filteredSubProducts = filteredSubProducts.filter((product) =>
+            product.colors.some((item) => colors.includes(item))
+          );
+        }
         // For the sort
         if (sort !== "popular") {
           if (sort === "highToLow") {

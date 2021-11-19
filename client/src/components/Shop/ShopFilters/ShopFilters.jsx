@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Form, Offcanvas, Row, Col } from "react-bootstrap";
+import { Form, Offcanvas, Row, Col, Button } from "react-bootstrap";
 
+import "../../../pages/ProductDetails/ProductDetails.scss";
+
+import { FaCheck } from "react-icons/fa";
 import { BsSliders } from "react-icons/bs";
 import {
   filterProducts,
@@ -19,6 +22,26 @@ const ShopFilters = ({ route }) => {
   ];
   const filterSubTravels = ["tent", "gloves", "jacket", "bag", "boots"];
 
+  const filterColor = [
+    "white",
+    "pink",
+    "red",
+    "black",
+    "yellow",
+    "blue",
+    "green",
+    "purple",
+    "gray",
+    "skyblue",
+    "brown",
+    "silver",
+    "tealblue",
+    "violet",
+    "yellowgreen",
+    "mintgreen",
+    "phantsm",
+  ];
+
   //All sub Filters
   const filterSubAll = filterSubSports.concat(filterSubTravels);
 
@@ -26,6 +49,7 @@ const ShopFilters = ({ route }) => {
   const [sort, setSort] = useState("popular");
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
+  const [colorName, setColorName] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -71,17 +95,31 @@ const ShopFilters = ({ route }) => {
   useEffect(() => {
     //   If in shop
     if (categoryPage === "all") {
-      dispatch(filterProducts(sort, category, subCategory));
+      dispatch(filterProducts(sort, colorName, category, subCategory));
     }
     // if in sub category
     else {
       if (subCategoryPage !== "") {
-        dispatch(filterSubProducts(sort, categoryPage, subCategoryPage));
+        dispatch(
+          filterSubProducts(sort, colorName, categoryPage, subCategoryPage)
+        );
       } else {
-        dispatch(filterSubCategoryProducts(sort, categoryPage, subCategory));
+        dispatch(
+          filterSubCategoryProducts(sort, colorName, categoryPage, subCategory)
+        );
       }
     }
-  }, [sort, category, subCategory, dispatch, categoryPage, subCategoryPage]);
+  }, [
+    sort,
+    category,
+    subCategory,
+    dispatch,
+    categoryPage,
+    subCategoryPage,
+    colorName,
+  ]);
+
+  console.log(colorName);
 
   return (
     <div>
@@ -202,6 +240,38 @@ const ShopFilters = ({ route }) => {
                       </Col>
                     );
                   })}
+            </Row>
+            <Row>
+              <p className="mt-4">Colours:</p>
+              {filterColor.map((color) => {
+                return (
+                  <Col xs={3}>
+                    <Button
+                      key={color}
+                      onClick={() => {
+                        if (colorName.includes(color)) {
+                          setColorName(
+                            colorName.filter((colors) => colors !== color)
+                          );
+                        } else {
+                          setColorName([...colorName, color]);
+                        }
+                      }}
+                      className={`mb-2 btn-${color}`}
+                      style={{ borderRadius: "20px", padding: "6px 11px" }}
+                    >
+                      {colorName.includes(color) ? (
+                        <FaCheck
+                          size="1rem"
+                          style={{ visibility: "visible" }}
+                        />
+                      ) : (
+                        <FaCheck size="1rem" style={{ visibility: "hidden" }} />
+                      )}
+                    </Button>
+                  </Col>
+                );
+              })}
             </Row>
           </Form>
         </Offcanvas.Body>
