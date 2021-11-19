@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Form, Offcanvas, Row, Col, Button } from "react-bootstrap";
+import { Form, Offcanvas, Row, Col, Button, Accordion } from "react-bootstrap";
 
 import "../../../pages/ProductDetails/ProductDetails.scss";
 
@@ -37,8 +37,7 @@ const ShopFilters = ({ route }) => {
     "silver",
     "tealblue",
     "violet",
-    "yellowgreen",
-    "mintgreen",
+    "mint",
     "phantsm",
   ];
 
@@ -155,122 +154,142 @@ const ShopFilters = ({ route }) => {
           <Offcanvas.Title>Filters</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          {categoryPage === "all" && (
-            <Form className="mb-4">
-              <p>Categories:</p>
-              <Form.Check
-                inline
-                label="Travels"
-                name="group1"
-                type="checkbox"
-                id="inline-checkbox-1"
-                value="travels"
-                checked={category.includes("travels")}
-                onChange={filterCategoryValidation}
-              />
-              <Form.Check
-                inline
-                label="Sports"
-                name="group1"
-                type="checkbox"
-                id="inline-checkbox-2"
-                value="sports"
-                checked={category.includes("sports")}
-                onChange={filterCategoryValidation}
-              />
-            </Form>
-          )}
-
-          <Form>
-            <p>Sub Categories:</p>
-            <Row>
-              {((categoryPage === "all") & (category.length === 0)) |
-              (category.length === 2)
-                ? filterSubAll.map((subcategory, index) => {
-                    return (
-                      <Col xs={6}>
-                        <Form.Check
-                          inline
-                          label={capitalizeFirstLetter(subcategory)}
-                          name="group2"
-                          type="checkbox"
-                          id={`inline-checkbox1-${index}`}
-                          value={subcategory}
-                          key={index}
-                          checked={subCategory.includes(subcategory)}
-                          onChange={filterSubCategoryValidation}
-                        />
-                      </Col>
-                    );
-                  })
-                : (categoryPage === "sports") | category.includes("sports")
-                ? filterSubSports.map((subcategory, index) => {
-                    return (
-                      <Col xs={6}>
-                        <Form.Check
-                          inline
-                          label={capitalizeFirstLetter(subcategory)}
-                          name="group2"
-                          type="checkbox"
-                          id={`inline-checkbox1-${index}`}
-                          value={subcategory}
-                          key={index}
-                          checked={subCategory.includes(subcategory)}
-                          onChange={filterSubCategoryValidation}
-                        />
-                      </Col>
-                    );
-                  })
-                : filterSubTravels.map((subcategory, index) => {
-                    return (
-                      <Col xs={6}>
-                        <Form.Check
-                          inline
-                          label={capitalizeFirstLetter(subcategory)}
-                          name="group2"
-                          type="checkbox"
-                          id={`inline-checkbox-${index}`}
-                          value={subcategory}
-                          key={index}
-                          checked={subCategory.includes(subcategory)}
-                          onChange={filterSubCategoryValidation}
-                        />
-                      </Col>
-                    );
-                  })}
-            </Row>
-            <Row>
-              <p className="mt-4">Colours:</p>
-              {filterColor.map((color, index) => {
-                return (
-                  <Col xs={3} key={index}>
-                    <Button
-                      onClick={() => {
-                        if (colorName.includes(color)) {
-                          setColorName(
-                            colorName.filter((colors) => colors !== color)
-                          );
-                        } else {
-                          setColorName([...colorName, color]);
-                        }
-                      }}
-                      className={`mb-2 btn-${color}`}
-                      style={{ borderRadius: "20px", padding: "6px 11px" }}
-                    >
-                      {colorName.includes(color) ? (
-                        <FaCheck
-                          size="1rem"
-                          style={{ visibility: "visible" }}
-                        />
-                      ) : (
-                        <FaCheck size="1rem" style={{ visibility: "hidden" }} />
-                      )}
-                    </Button>
-                  </Col>
-                );
-              })}
-            </Row>
-          </Form>
+          <Accordion>
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>Categories</Accordion.Header>
+              <Accordion.Body>
+                {categoryPage === "all" && (
+                  <Form className="mb-4">
+                    <Form.Check
+                      inline
+                      label="Travels"
+                      name="group1"
+                      type="checkbox"
+                      id="inline-checkbox-1"
+                      value="travels"
+                      checked={category.includes("travels")}
+                      onChange={filterCategoryValidation}
+                    />
+                    <Form.Check
+                      inline
+                      label="Sports"
+                      name="group1"
+                      type="checkbox"
+                      id="inline-checkbox-2"
+                      value="sports"
+                      checked={category.includes("sports")}
+                      onChange={filterCategoryValidation}
+                    />
+                  </Form>
+                )}
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="1">
+              <Accordion.Header>Sub Categories</Accordion.Header>
+              <Accordion.Body>
+                <Row>
+                  {((categoryPage === "all") & (category.length === 0)) |
+                  (category.length === 2)
+                    ? filterSubAll.map((subcategory, index) => {
+                        return (
+                          <Col xs={6}>
+                            <Form.Check
+                              inline
+                              label={capitalizeFirstLetter(subcategory)}
+                              name="group2"
+                              type="checkbox"
+                              id={`inline-checkbox1-${index}`}
+                              value={subcategory}
+                              key={index}
+                              checked={subCategory.includes(subcategory)}
+                              onChange={filterSubCategoryValidation}
+                            />
+                          </Col>
+                        );
+                      })
+                    : (categoryPage === "sports") | category.includes("sports")
+                    ? filterSubSports.map((subcategory, index) => {
+                        return (
+                          <Col xs={6}>
+                            <Form.Check
+                              inline
+                              label={capitalizeFirstLetter(subcategory)}
+                              name="group2"
+                              type="checkbox"
+                              id={`inline-checkbox1-${index}`}
+                              value={subcategory}
+                              key={index}
+                              checked={subCategory.includes(subcategory)}
+                              onChange={filterSubCategoryValidation}
+                            />
+                          </Col>
+                        );
+                      })
+                    : filterSubTravels.map((subcategory, index) => {
+                        return (
+                          <Col xs={6}>
+                            <Form.Check
+                              inline
+                              label={capitalizeFirstLetter(subcategory)}
+                              name="group2"
+                              type="checkbox"
+                              id={`inline-checkbox-${index}`}
+                              value={subcategory}
+                              key={index}
+                              checked={subCategory.includes(subcategory)}
+                              onChange={filterSubCategoryValidation}
+                            />
+                          </Col>
+                        );
+                      })}
+                </Row>
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="2">
+              <Accordion.Header>Colours</Accordion.Header>
+              <Accordion.Body>
+                <Form>
+                  <Row>
+                    {filterColor.map((color, index) => {
+                      return (
+                        <Col xs={4} key={index} className="text-center">
+                          <Button
+                            onClick={() => {
+                              if (colorName.includes(color)) {
+                                setColorName(
+                                  colorName.filter((colors) => colors !== color)
+                                );
+                              } else {
+                                setColorName([...colorName, color]);
+                              }
+                            }}
+                            className={`btn-${color}`}
+                            style={{
+                              borderRadius: "20px",
+                              padding: "6px 11px",
+                            }}
+                          >
+                            {colorName.includes(color) ? (
+                              <FaCheck
+                                size="1rem"
+                                style={{ visibility: "visible" }}
+                              />
+                            ) : (
+                              <FaCheck
+                                size="1rem"
+                                style={{ visibility: "hidden" }}
+                              />
+                            )}
+                          </Button>
+                          <p>{color}</p>
+                        </Col>
+                      );
+                    })}
+                  </Row>
+                </Form>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
         </Offcanvas.Body>
       </Offcanvas>
     </div>
