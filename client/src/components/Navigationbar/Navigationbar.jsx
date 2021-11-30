@@ -150,6 +150,10 @@ function Navigationbar() {
 
                 {currentUser && (
                   <div>
+                    <NavDropdown.Item disabled>
+                      {currentUser.username}
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
                     <NavDropdown.Item as={Link} to="/orders">
                       Orders
                     </NavDropdown.Item>
@@ -295,7 +299,8 @@ function Navigationbar() {
                   <Accordion flush>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header>
-                        <FaUser size={20} /> {username}
+                        <FaUser size={20} />{" "}
+                        <span className="ms-2">{username}</span>
                       </Accordion.Header>
                       <Accordion.Body>
                         {!currentUser && (
