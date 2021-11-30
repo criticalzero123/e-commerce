@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
   return (
     <Link
       to={`/shop/${product.category}/${product.subCategory}/${product._id}`}
-      style={{ textDecoration: "none" }}
+      className="no-decoration"
     >
       <Card>
         <Card.Img
