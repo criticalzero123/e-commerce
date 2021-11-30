@@ -85,7 +85,7 @@ function Navigationbar() {
       <Navbar bg="light" expand="lg" className="fixed-top">
         <Container>
           <Col>
-            <Navbar.Brand as={Link} to="/">
+            <Navbar.Brand as={Link} to="/" className="no-decoration">
               <Logo />
               athilda.
             </Navbar.Brand>
