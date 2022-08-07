@@ -2,4 +2,12 @@
 
 #Link for the site https://int-prog.herokuapp.com/
 
+#Fully Functional Website
+
+#Created using MERN(MongoDB, ExpressJS, ReactJS, NodeJS) Stack with payment stripe test
+
+#Dummy credit card number: is 4242 4242 4242, date: 12/24, CVC: any 3 digits
+
+
+
 #Mobile supported
