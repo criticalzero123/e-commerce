@@ -4,7 +4,7 @@
 
 #Fully Functional Website
 
-#Created using MERN(MongoDB, ExpressJS, ReactJS, NodeJS) Stack with payment stripe test
+#Created using MERN(MongoDB, ExpressJS, ReactJS, NodeJS) Stack with payment stripe test and Heroku for hosting.
 
 #Dummy credit card number: is 4242 4242 4242, date: 12/24, CVC: any 3 digits
 
